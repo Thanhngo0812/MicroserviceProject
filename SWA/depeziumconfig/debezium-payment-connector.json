@@ -1,0 +1,24 @@
+{
+  "name": "orderservice-outbox-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres_payment",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "thanh0909246319",
+    "database.dbname": "paymentservice",
+    "database.server.name": "payment-db-server",
+    "topic.prefix": "dbz.paymentservice",
+    "table.include.list": "payment.payment_outbox",
+    "publication.name": "dbz_payment_outbox_publication",
+    "plugin.name": "pgoutput",
+    "transforms": "outbox",
+    "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+    "value.converter.schemas.enabled": "true",
+    "transforms.outbox.table.field.event.key": "saga_id",
+    "transforms.outbox.table.field.event.payload": "payload",
+    "transforms.outbox.route.by.field": "event_type",
+    "transforms.outbox.route.topic.replacement": "${routedByValue}"
+
+  }
+}

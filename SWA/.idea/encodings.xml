@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ByteaToAvroSMT/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ByteaToAvroSMT/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-application-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-container/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-domain/payment-domain-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/payment-messaging/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paymentservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurantservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurantservice/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

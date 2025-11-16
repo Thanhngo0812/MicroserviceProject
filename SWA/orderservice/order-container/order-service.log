@@ -1,0 +1,936 @@
+2025-10-27T10:44:03.476+07:00  INFO 7208 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 7208 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T10:44:03.490+07:00  INFO 7208 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T10:44:03.650+07:00  INFO 7208 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-27T10:44:03.651+07:00  INFO 7208 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-27T10:44:05.989+07:00  INFO 7208 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T10:44:06.090+07:00  INFO 7208 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 1 JPA repository interface.
+2025-10-27T10:44:07.578+07:00  INFO 7208 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T10:44:07.613+07:00  INFO 7208 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T10:44:07.614+07:00  INFO 7208 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T10:44:07.701+07:00  INFO 7208 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-27T10:44:07.702+07:00  INFO 7208 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4050 ms
+2025-10-27T10:44:08.107+07:00  INFO 7208 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T10:44:08.291+07:00  INFO 7208 --- [orderservice] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-27T10:44:08.374+07:00  INFO 7208 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T10:44:09.246+07:00  INFO 7208 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T10:44:09.464+07:00  INFO 7208 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-27T10:44:09.979+07:00  INFO 7208 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4774cfde
+2025-10-27T10:44:09.982+07:00  INFO 7208 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-27T10:44:10.240+07:00  WARN 7208 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T10:44:10.351+07:00  INFO 7208 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T10:44:14.090+07:00  INFO 7208 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T10:44:14.462+07:00  INFO 7208 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T10:44:16.813+07:00  WARN 7208 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T10:44:18.785+07:00  INFO 7208 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T10:44:19.027+07:00  INFO 7208 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T10:44:19.070+07:00  INFO 7208 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 16.293 seconds (process running for 20.656)
+2025-10-27T10:44:34.653+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T10:44:34.654+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T10:44:34.656+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T10:44:35.274+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T10:44:35.276+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T10:44:35.544+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 4f030dfe-f122-436a-b8db-39d5b7ef5dc9
+2025-10-27T10:44:35.688+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 4f030dfe-f122-436a-b8db-39d5b7ef5dc9
+2025-10-27T10:44:35.689+07:00  INFO 7208 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Order created with tracking id: e706896b-1f76-4923-a9bd-0d4797c713c4
+2025-10-27T12:09:21.574+07:00  INFO 26656 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 26656 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:09:21.594+07:00  INFO 26656 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:09:21.952+07:00  INFO 26656 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-27T12:09:21.952+07:00  INFO 26656 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-27T12:09:28.004+07:00  INFO 26656 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:09:28.288+07:00  INFO 26656 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 177 ms. Found 1 JPA repository interface.
+2025-10-27T12:09:29.485+07:00  INFO 26656 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:09:29.512+07:00  INFO 26656 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:09:29.513+07:00  INFO 26656 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:09:29.581+07:00  INFO 26656 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:09:29.582+07:00  INFO 26656 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7622 ms
+2025-10-27T12:09:29.871+07:00  INFO 26656 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:09:29.999+07:00  INFO 26656 --- [orderservice] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-27T12:09:30.087+07:00  INFO 26656 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:09:30.678+07:00  INFO 26656 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:09:30.740+07:00  INFO 26656 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-27T12:09:31.046+07:00  INFO 26656 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@9d255d1
+2025-10-27T12:09:31.047+07:00  INFO 26656 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-27T12:09:31.114+07:00  WARN 26656 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:09:31.144+07:00  INFO 26656 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:09:32.571+07:00  INFO 26656 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:09:32.806+07:00  INFO 26656 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:09:33.525+07:00  WARN 26656 --- [orderservice] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'orderController' defined in file [C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes\com\ct08SWA\orderservice\ordercontainer\rest\OrderController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'orderApplicationServiceImpl' defined in file [C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-application-service\target\classes\com\ct08SWA\orderservice\orderapplicationservice\handler\OrderApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'orderCreateCommandHandler' defined in file [C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-application-service\target\classes\com\ct08SWA\orderservice\orderapplicationservice\handler\OrderCreateCommandHandler.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'com.ct08SWA.orderservice.orderapplicationservice.ports.outputports.Publisher.OrderMessagePublisher' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-10-27T12:09:33.528+07:00  INFO 26656 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:09:33.538+07:00  INFO 26656 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-27T12:09:33.545+07:00  INFO 26656 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-27T12:09:33.556+07:00  INFO 26656 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-10-27T12:09:33.575+07:00  INFO 26656 --- [orderservice] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-27T12:09:33.623+07:00 ERROR 26656 --- [orderservice] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.ct08SWA.orderservice.orderapplicationservice.handler.Service.OrderCreateCommandHandler required a bean of type 'com.ct08SWA.orderservice.orderapplicationservice.ports.outputports.Publisher.OrderMessagePublisher' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.ct08SWA.orderservice.orderapplicationservice.ports.outputports.Publisher.OrderMessagePublisher' in your configuration.
+
+2025-10-27T12:11:17.441+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:11:17.443+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:11:17.522+07:00  INFO 23924 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-27T12:11:17.523+07:00  INFO 23924 --- [orderservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-27T12:11:18.575+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:11:18.652+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 1 JPA repository interface.
+2025-10-27T12:11:19.932+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:11:19.960+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:11:19.961+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:11:20.044+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:11:20.044+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2520 ms
+2025-10-27T12:11:20.341+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:11:20.479+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-27T12:11:20.588+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:11:21.048+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:11:21.093+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-27T12:11:21.362+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e10f68a
+2025-10-27T12:11:21.365+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-27T12:11:21.425+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:11:21.452+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:11:22.689+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:11:22.898+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:11:23.351+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:11:23.945+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:11:23.993+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:11:24.004+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 7.303 seconds (process running for 8.123)
+2025-10-27T12:11:38.237+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:11:38.239+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:11:38.242+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-10-27T12:11:38.768+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:11:38.769+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:11:39.026+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 5c24cf73-8129-4091-85b9-473f6091e4de
+2025-10-27T12:11:39.148+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 5c24cf73-8129-4091-85b9-473f6091e4de
+2025-10-27T12:11:39.149+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 5c24cf73-8129-4091-85b9-473f6091e4de
+2025-10-27T12:11:39.239+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 5c24cf73-8129-4091-85b9-473f6091e4de, error: Invalid value null for configuration key.serializer: must be non-null.
+2025-10-27T12:11:39.239+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 5c24cf73-8129-4091-85b9-473f6091e4de
+2025-10-27T12:11:39.239+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Order created with tracking id: 4aaa4c8d-7739-443c-9c73-3bc42d861da6
+2025-10-27T12:16:13.388+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 63 class path changes (0 additions, 41 deletions, 22 modifications)
+2025-10-27T12:16:13.468+07:00  INFO 23924 --- [orderservice] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:16:13.522+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:16:13.553+07:00  INFO 23924 --- [orderservice] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:16:13.589+07:00  INFO 23924 --- [orderservice] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-27T12:16:13.615+07:00  INFO 23924 --- [orderservice] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-27T12:16:18.796+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:16:18.797+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:16:19.138+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:16:19.157+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interface.
+2025-10-27T12:16:19.394+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:16:19.396+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:16:19.397+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:16:19.426+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:16:19.427+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 625 ms
+2025-10-27T12:16:19.482+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:16:19.490+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:16:19.510+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:16:19.512+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-10-27T12:16:19.698+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@e9580fb
+2025-10-27T12:16:19.698+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-10-27T12:16:19.727+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:16:19.729+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:16:19.848+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:16:20.039+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:16:20.169+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:16:20.288+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:16:20.305+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:16:20.313+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.56 seconds (process running for 304.433)
+2025-10-27T12:16:20.321+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:16:55.604+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-10-27T12:16:55.607+07:00  INFO 23924 --- [orderservice] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:16:55.616+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:16:55.619+07:00  INFO 23924 --- [orderservice] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:16:55.619+07:00  INFO 23924 --- [orderservice] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-10-27T12:16:55.623+07:00  INFO 23924 --- [orderservice] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-10-27T12:16:55.741+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:16:55.742+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:16:55.971+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:16:55.982+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interface.
+2025-10-27T12:16:56.190+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:16:56.192+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:16:56.192+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:16:56.225+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:16:56.225+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 480 ms
+2025-10-27T12:16:56.251+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:16:56.257+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:16:56.268+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:16:56.269+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-10-27T12:16:56.308+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@10ca8cc4
+2025-10-27T12:16:56.308+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-10-27T12:16:56.318+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:16:56.320+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:16:56.406+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:16:56.568+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:16:56.680+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:16:56.798+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:16:56.810+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:16:56.816+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.11 seconds (process running for 340.936)
+2025-10-27T12:16:56.818+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:17:40.451+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:17:40.452+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:17:40.453+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T12:17:40.481+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:17:40.482+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:17:40.520+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 781f5df1-a888-4247-9671-2f923461b64b
+2025-10-27T12:17:40.547+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 781f5df1-a888-4247-9671-2f923461b64b
+2025-10-27T12:17:40.548+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 781f5df1-a888-4247-9671-2f923461b64b
+2025-10-27T12:17:40.551+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 781f5df1-a888-4247-9671-2f923461b64b, error: Invalid value null for configuration key.serializer: must be non-null.
+2025-10-27T12:17:40.552+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 781f5df1-a888-4247-9671-2f923461b64b
+2025-10-27T12:17:40.553+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Order created with tracking id: 21c55cae-78de-455d-8bc1-0f9448a5205a
+2025-10-27T12:17:52.711+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-27T12:17:52.712+07:00  INFO 23924 --- [orderservice] [Thread-14] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:17:52.726+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:17:52.733+07:00  INFO 23924 --- [orderservice] [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:17:52.735+07:00  INFO 23924 --- [orderservice] [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-10-27T12:17:52.748+07:00  INFO 23924 --- [orderservice] [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-10-27T12:17:52.903+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:17:52.905+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:17:53.294+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:17:53.336+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interface.
+2025-10-27T12:17:53.851+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:17:53.854+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:17:53.854+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:17:53.884+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:17:53.885+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 973 ms
+2025-10-27T12:17:53.941+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:17:53.955+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:17:53.985+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:17:53.991+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-10-27T12:17:54.078+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@2153b23
+2025-10-27T12:17:54.078+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-10-27T12:17:54.095+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:17:54.096+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:17:54.285+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:17:54.478+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:17:54.648+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:17:54.777+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:17:54.789+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:17:54.794+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.955 seconds (process running for 398.914)
+2025-10-27T12:17:54.796+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:18:01.987+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:18:01.987+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:18:01.988+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T12:18:02.024+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:18:02.026+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:18:02.079+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 728006a5-cc70-41a3-869d-486f5e14daf7
+2025-10-27T12:18:02.101+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 728006a5-cc70-41a3-869d-486f5e14daf7
+2025-10-27T12:18:02.102+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 728006a5-cc70-41a3-869d-486f5e14daf7
+2025-10-27T12:18:02.104+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 728006a5-cc70-41a3-869d-486f5e14daf7, error: Invalid value null for configuration key.serializer: must be non-null.
+2025-10-27T12:18:02.104+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 728006a5-cc70-41a3-869d-486f5e14daf7
+2025-10-27T12:18:02.104+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Order created with tracking id: 9216b026-fbbd-4c51-a31b-eaffbd06fdb8
+2025-10-27T12:21:06.775+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:21:06.777+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:21:06.815+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: edaa349d-0df2-4ffb-a6a1-a94da32ce4d1
+2025-10-27T12:21:06.835+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: edaa349d-0df2-4ffb-a6a1-a94da32ce4d1
+2025-10-27T12:21:06.837+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: edaa349d-0df2-4ffb-a6a1-a94da32ce4d1
+2025-10-27T12:21:06.840+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: edaa349d-0df2-4ffb-a6a1-a94da32ce4d1, error: Invalid value null for configuration key.serializer: must be non-null.
+2025-10-27T12:21:06.841+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: edaa349d-0df2-4ffb-a6a1-a94da32ce4d1
+2025-10-27T12:21:06.841+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-5] c.c.o.o.rest.OrderController             : Order created with tracking id: af553036-0f1f-49b3-8034-3a1b6bbab3a1
+2025-10-27T12:23:55.736+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-27T12:23:55.811+07:00  INFO 23924 --- [orderservice] [Thread-18] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:23:55.851+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:23:55.881+07:00  INFO 23924 --- [orderservice] [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:23:55.915+07:00  INFO 23924 --- [orderservice] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-10-27T12:23:55.925+07:00  INFO 23924 --- [orderservice] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-10-27T12:23:56.480+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:23:56.481+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:23:56.839+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:23:56.855+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2025-10-27T12:23:57.136+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:23:57.139+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:23:57.139+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:23:57.168+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:23:57.170+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 682 ms
+2025-10-27T12:23:57.231+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:23:57.239+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:23:57.256+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:23:57.259+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-10-27T12:23:57.338+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@5abcff7b
+2025-10-27T12:23:57.338+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-10-27T12:23:57.363+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:23:57.364+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:23:57.457+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:23:57.705+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:23:57.814+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:23:57.880+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:23:57.899+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:23:57.902+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.506 seconds (process running for 762.023)
+2025-10-27T12:23:57.907+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:24:03.690+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:24:03.691+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:24:03.692+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T12:24:03.758+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:24:03.758+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:24:03.815+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 7ed3aff1-34be-43b4-b48b-9ef0795cb095
+2025-10-27T12:24:03.932+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 7ed3aff1-34be-43b4-b48b-9ef0795cb095
+2025-10-27T12:24:03.933+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 7ed3aff1-34be-43b4-b48b-9ef0795cb095
+2025-10-27T12:24:03.973+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [kafka:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = orderservice-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-10-27T12:24:04.244+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-10-27T12:24:04.683+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Instantiated an idempotent producer.
+2025-10-27T12:24:07.455+07:00  WARN 23924 --- [orderservice] [http-nio-8888-exec-3] org.apache.kafka.clients.ClientUtils     : Couldn't resolve server kafka:9092 from bootstrap.servers as DNS resolution failed for kafka
+2025-10-27T12:24:07.455+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Closing the Kafka producer with timeoutMillis = 0 ms.
+2025-10-27T12:24:07.456+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-10-27T12:24:07.457+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-10-27T12:24:07.457+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-10-27T12:24:07.457+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-10-27T12:24:07.461+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for orderservice-producer-1 unregistered
+2025-10-27T12:24:07.462+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 7ed3aff1-34be-43b4-b48b-9ef0795cb095, error: Failed to construct kafka producer
+2025-10-27T12:24:07.463+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 7ed3aff1-34be-43b4-b48b-9ef0795cb095
+2025-10-27T12:24:07.463+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-3] c.c.o.o.rest.OrderController             : Order created with tracking id: f72d1989-e21e-4640-bbac-395de9e8dc37
+2025-10-27T12:26:16.944+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-27T12:26:17.021+07:00  INFO 23924 --- [orderservice] [Thread-22] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:26:17.042+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:26:17.047+07:00  INFO 23924 --- [orderservice] [Thread-22] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:26:17.051+07:00  INFO 23924 --- [orderservice] [Thread-22] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-10-27T12:26:17.055+07:00  INFO 23924 --- [orderservice] [Thread-22] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-10-27T12:26:17.195+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:26:17.195+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:26:17.548+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:26:17.565+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2025-10-27T12:26:17.789+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:26:17.792+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:26:17.792+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:26:17.812+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:26:17.812+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 610 ms
+2025-10-27T12:26:17.836+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:26:17.843+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:26:17.859+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:26:17.861+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-10-27T12:26:17.922+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@e29769e
+2025-10-27T12:26:17.923+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-10-27T12:26:17.945+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:26:17.949+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:26:18.037+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:26:18.232+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:26:18.356+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:26:18.429+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:26:18.438+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:26:18.442+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.294 seconds (process running for 902.561)
+2025-10-27T12:26:18.443+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:26:29.588+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:26:29.589+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:26:29.591+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-27T12:26:29.629+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:26:29.630+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:26:29.680+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 113e6d99-b208-49c7-b467-713c91687c2e
+2025-10-27T12:26:29.708+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 113e6d99-b208-49c7-b467-713c91687c2e
+2025-10-27T12:26:29.708+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 113e6d99-b208-49c7-b467-713c91687c2e
+2025-10-27T12:26:29.717+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [kafka:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = orderservice-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-10-27T12:26:29.718+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-10-27T12:26:29.722+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Instantiated an idempotent producer.
+2025-10-27T12:26:32.430+07:00  WARN 23924 --- [orderservice] [http-nio-8888-exec-2] org.apache.kafka.clients.ClientUtils     : Couldn't resolve server kafka:9092 from bootstrap.servers as DNS resolution failed for kafka
+2025-10-27T12:26:32.432+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Closing the Kafka producer with timeoutMillis = 0 ms.
+2025-10-27T12:26:32.433+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-10-27T12:26:32.433+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-10-27T12:26:32.433+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-10-27T12:26:32.433+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-10-27T12:26:32.433+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for orderservice-producer-1 unregistered
+2025-10-27T12:26:32.434+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 113e6d99-b208-49c7-b467-713c91687c2e, error: Failed to construct kafka producer
+2025-10-27T12:26:32.434+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 113e6d99-b208-49c7-b467-713c91687c2e
+2025-10-27T12:26:32.434+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Order created with tracking id: 03af0abe-a13f-4c6d-b054-659d8043322c
+2025-10-27T12:26:52.899+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-27T12:26:52.900+07:00  INFO 23924 --- [orderservice] [Thread-26] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:26:52.909+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:26:52.912+07:00  INFO 23924 --- [orderservice] [Thread-26] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:26:52.913+07:00  INFO 23924 --- [orderservice] [Thread-26] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-10-27T12:26:52.915+07:00  INFO 23924 --- [orderservice] [Thread-26] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-10-27T12:26:53.023+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:26:53.024+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:26:53.430+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:26:53.447+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2025-10-27T12:26:53.622+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:26:53.624+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:26:53.624+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:26:53.646+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:26:53.647+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 615 ms
+2025-10-27T12:26:53.671+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:26:53.675+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:26:53.690+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:26:53.691+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-10-27T12:26:53.754+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@1425aeb9
+2025-10-27T12:26:53.756+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-10-27T12:26:53.772+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:26:53.773+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:26:53.868+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:26:54.023+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:26:54.120+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:26:54.196+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:26:54.209+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:26:54.213+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.224 seconds (process running for 938.333)
+2025-10-27T12:26:54.214+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:27:00.492+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:27:00.493+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:27:00.495+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T12:27:00.530+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:27:00.530+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:27:00.577+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 428ab6f8-646b-4cd6-8587-5a5c3899792c
+2025-10-27T12:27:00.595+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 428ab6f8-646b-4cd6-8587-5a5c3899792c
+2025-10-27T12:27:00.596+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 428ab6f8-646b-4cd6-8587-5a5c3899792c
+2025-10-27T12:27:00.598+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [kafka:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = orderservice-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-10-27T12:27:00.599+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-10-27T12:27:00.602+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Instantiated an idempotent producer.
+2025-10-27T12:27:03.328+07:00  WARN 23924 --- [orderservice] [http-nio-8888-exec-2] org.apache.kafka.clients.ClientUtils     : Couldn't resolve server kafka:9092 from bootstrap.servers as DNS resolution failed for kafka
+2025-10-27T12:27:03.329+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Closing the Kafka producer with timeoutMillis = 0 ms.
+2025-10-27T12:27:03.330+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-10-27T12:27:03.330+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-10-27T12:27:03.331+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-10-27T12:27:03.331+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-10-27T12:27:03.331+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for orderservice-producer-1 unregistered
+2025-10-27T12:27:03.331+07:00 ERROR 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.p.KafkaOrderMessagePublisher     : Error while sending OrderCreatedEvent to Kafka topic: order-created-topic for order id: 428ab6f8-646b-4cd6-8587-5a5c3899792c, error: Failed to construct kafka producer
+2025-10-27T12:27:03.331+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 428ab6f8-646b-4cd6-8587-5a5c3899792c
+2025-10-27T12:27:03.331+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-2] c.c.o.o.rest.OrderController             : Order created with tracking id: e9e73ade-0541-4b7f-95d8-9669473ac8a8
+2025-10-27T12:27:59.366+07:00  INFO 23924 --- [orderservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-27T12:27:59.381+07:00  INFO 23924 --- [orderservice] [Thread-30] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-27T12:27:59.391+07:00  INFO 23924 --- [orderservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-27T12:27:59.393+07:00  INFO 23924 --- [orderservice] [Thread-30] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:27:59.394+07:00  INFO 23924 --- [orderservice] [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-10-27T12:27:59.398+07:00  INFO 23924 --- [orderservice] [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-10-27T12:27:59.545+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Starting OrderserviceApplication using Java 21.0.7 with PID 23924 (C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container\target\classes started by ADMIN in C:\Users\ADMIN\Desktop\kientruc\New folder\Orderservice\backend\orderservice\order-container)
+2025-10-27T12:27:59.546+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-10-27T12:27:59.817+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T12:27:59.834+07:00  INFO 23924 --- [orderservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2025-10-27T12:28:00.109+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2025-10-27T12:28:00.112+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T12:28:00.112+07:00  INFO 23924 --- [orderservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-27T12:28:00.142+07:00  INFO 23924 --- [orderservice] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-10-27T12:28:00.142+07:00  INFO 23924 --- [orderservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 594 ms
+2025-10-27T12:28:00.210+07:00  INFO 23924 --- [orderservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T12:28:00.222+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-27T12:28:00.243+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T12:28:00.247+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-10-27T12:28:00.314+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection org.postgresql.jdbc.PgConnection@6cb6e5eb
+2025-10-27T12:28:00.314+07:00  INFO 23924 --- [orderservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-10-27T12:28:00.326+07:00  WARN 23924 --- [orderservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T12:28:00.330+07:00  INFO 23924 --- [orderservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 14.19
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-27T12:28:00.447+07:00  INFO 23924 --- [orderservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T12:28:00.615+07:00  INFO 23924 --- [orderservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T12:28:00.743+07:00  WARN 23924 --- [orderservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T12:28:00.843+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-27T12:28:00.857+07:00  INFO 23924 --- [orderservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path '/'
+2025-10-27T12:28:00.860+07:00  INFO 23924 --- [orderservice] [restartedMain] c.c.o.o.c.OrderserviceApplication        : Started OrderserviceApplication in 1.376 seconds (process running for 1004.979)
+2025-10-27T12:28:00.862+07:00  INFO 23924 --- [orderservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-27T12:28:04.559+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-27T12:28:04.559+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-27T12:28:04.560+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-27T12:28:04.592+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Creating order for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 at restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:28:04.593+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderApplicationServiceImpl    : Received create order command for customer: d215b5f8-0249-4dc5-89a3-51fd148cfb41 and restaurant: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+2025-10-27T12:28:04.624+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.handler.OrderCreateHelper        : Order is saved with id: 89843de9-07d6-4bd3-84ea-eecabc0bda93
+2025-10-27T12:28:04.638+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : Order is created with id: 89843de9-07d6-4bd3-84ea-eecabc0bda93
+2025-10-27T12:28:04.638+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : Publishing OrderCreatedEvent for order id: 89843de9-07d6-4bd3-84ea-eecabc0bda93
+2025-10-27T12:28:04.639+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = orderservice-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-10-27T12:28:04.640+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-10-27T12:28:04.643+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=orderservice-producer-1] Instantiated an idempotent producer.
+2025-10-27T12:28:04.756+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+2025-10-27T12:28:04.757+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+2025-10-27T12:28:04.757+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1761542884753
+2025-10-27T12:28:06.729+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] The metadata response from the cluster reported a recoverable issue with correlation id 2 : {order-created-topic=LEADER_NOT_AVAILABLE}
+2025-10-27T12:28:06.735+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=orderservice-producer-1] Cluster ID: uToTi-ByRESNJKe8ij15IQ
+2025-10-27T12:28:06.900+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] The metadata response from the cluster reported a recoverable issue with correlation id 7 : {order-created-topic=LEADER_NOT_AVAILABLE}
+2025-10-27T12:28:07.043+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=orderservice-producer-1] ProducerId set to 1000 with epoch 0
+2025-10-27T12:28:07.137+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] The metadata response from the cluster reported a recoverable issue with correlation id 8 : {order-created-topic=LEADER_NOT_AVAILABLE}
+2025-10-27T12:28:07.683+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.p.KafkaOrderMessagePublisher     : OrderCreatedEvent sent to Kafka topic: order-created-topic for order id: 89843de9-07d6-4bd3-84ea-eecabc0bda93
+2025-10-27T12:28:07.683+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.h.OrderCreateCommandHandler      : OrderCreatedEvent published for order id: 89843de9-07d6-4bd3-84ea-eecabc0bda93
+2025-10-27T12:28:07.683+07:00  INFO 23924 --- [orderservice] [http-nio-8888-exec-1] c.c.o.o.rest.OrderController             : Order created with tracking id: 08485067-7ef0-4857-9383-2f6dc88c0ccc
+2025-10-27T12:29:08.073+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node -1 disconnected.
+2025-10-27T12:29:08.085+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:08.085+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Cancelled in-flight METADATA request with correlation id 11 due to node 1 being disconnected (elapsed time since creation: 1ms, elapsed time since send: 1ms, throttle time: 0ms, request timeout: 30000ms)
+2025-10-27T12:29:08.221+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:08.222+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Cancelled in-flight API_VERSIONS request with correlation id 12 due to node 1 being disconnected (elapsed time since creation: 5ms, elapsed time since send: 5ms, throttle time: 0ms, request timeout: 30000ms)
+2025-10-27T12:29:08.466+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:08.467+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Cancelled in-flight API_VERSIONS request with correlation id 13 due to node 1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, throttle time: 0ms, request timeout: 30000ms)
+2025-10-27T12:29:08.919+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:08.920+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Cancelled in-flight API_VERSIONS request with correlation id 14 due to node 1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, throttle time: 0ms, request timeout: 30000ms)
+2025-10-27T12:29:09.868+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:09.869+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:10.883+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:10.884+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:11.887+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:11.888+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:12.891+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:12.915+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:13.901+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:13.901+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:14.910+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:14.910+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:15.923+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:15.923+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:16.849+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:16.849+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:17.725+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:17.725+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:18.727+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:18.727+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:19.738+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:19.969+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:20.748+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:20.748+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:21.756+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:21.756+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:22.766+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:22.768+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:23.775+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:23.775+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+2025-10-27T12:29:24.787+07:00  INFO 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Node 1 disconnected.
+2025-10-27T12:29:24.788+07:00  WARN 23924 --- [orderservice] [kafka-producer-network-thread | orderservice-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=orderservice-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.

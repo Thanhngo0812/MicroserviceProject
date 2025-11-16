@@ -1,0 +1,250 @@
+version: '3.8'
+
+services:
+  # -------------------------------------------
+  # Infrastructure Services (Kafka, ZK, Schema Registry)
+  # -------------------------------------------
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    hostname: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - microservice-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092" # Port cho local access (debugging)
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092 # Internal & External
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true' 
+    networks:
+      - microservice-network
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      KAFKA_CLUSTERS_0_NAME: "kraft-cluster"
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      
+      # 1. Khai báo địa chỉ Schema Registry (Dùng KAFKA_CLUSTERS_0_)
+      KAFKA_CLUSTERS_0_SCHEMAREGISTRY: "http://schema-registry:8081"
+      
+      # 2. BƯỚC QUAN TRỌNG: Chỉ định Deserializer cho VALUE
+      KAFKA_CLUSTERS_0_PROPERTIES_VALUE_DESERIALIZER: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      
+      # 3. (Tùy chọn) Chỉ định Deserializer cho KEY (Nếu key là String)
+      KAFKA_CLUSTERS_0_PROPERTIES_KEY_DESERIALIZER: "org.apache.kafka.common.serialization.StringDeserializer"
+      
+    depends_on:
+      - kafka
+      - schema-registry 
+    networks:
+      - microservice-network
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.4.0
+    container_name: schema-registry
+    hostname: schema-registry
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka:29092' # Kết nối Kafka qua internal listener
+    networks:
+      - microservice-network
+
+
+  # -------------------------------------------
+  # Database Services (One per microservice)
+  # -------------------------------------------
+  # -------------------------
+  # Dịch vụ PostgreSQL Database
+  # -------------------------
+  
+  postgres_order:
+    image: postgres:15
+    container_name: postgres_order
+    hostname: postgres_order
+    ports:
+      - "5431:5432" # Map port DB của OrderService ra local
+    environment:
+      POSTGRES_DB: orderservice # Tên DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh0909246319 # Thay bằng password của bạn
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - postgres_order_data:/var/lib/postgresql/data
+      # Map thư mục chứa script init DB của OrderService
+      - ./init_db_orderservice:/docker-entrypoint-initdb.d
+    networks:
+      - microservice-network
+
+  
+  postgres_payment:
+    image: postgres:15
+    container_name: postgres_payment
+    hostname: postgres_payment
+    ports:
+      - "5433:5432" # Map port DB của PaymentService ra cổng khác (5433) trên local
+    environment:
+      POSTGRES_DB: paymentservice # Tên DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh0909246319 # Thay bằng password của bạn
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - postgres_payment_data:/var/lib/postgresql/data
+      # Map thư mục chứa script init DB của PaymentService
+      - ./init_db_paymentservice:/docker-entrypoint-initdb.d
+    networks:
+      - microservice-network
+
+  # Tương tự cho RestaurantService nếu cần DB riêng
+  # postgres_restaurant:
+  #   image: postgres:14-alpine
+  #   container_name: postgres_restaurant
+  #   hostname: postgres_restaurant
+  #   ports:
+  #     - "5434:5432"
+  #   environment:
+  #     POSTGRES_DB: restaurantservice
+  #     POSTGRES_USER: restaurant_user
+  #     POSTGRES_PASSWORD: restaurant_password
+  #   volumes:
+  #     - postgres_restaurant_data:/var/lib/postgresql/data
+  #     - ./init_db_restaurantservice:/docker-entrypoint-initdb.d
+  #   networks:
+  #     - microservice-network
+  # -------------------------------------------
+  # DỊCH VỤ DEBEZIUM (KAFKA CONNECT)
+  # -------------------------------------------
+  # -------------------------------------------
+  connect:
+    #build:
+     # context: ./custom-connect
+      #dockerfile: Dockerfile
+    image: debezium/connect:1.9
+    container_name: debezium-connect
+    hostname: debezium-connect
+    depends_on:
+      - kafka
+      - schema-registry
+      - postgres_order
+      - postgres_payment
+    ports:
+      - "8083:8083"
+    environment:
+      BOOTSTRAP_SERVERS: 'kafka:29092'
+      REST_PORT: 8083
+      GROUP_ID: "debezium-connect-group"
+      CONFIG_STORAGE_TOPIC: "debezium_connect_configs"
+      OFFSET_STORAGE_TOPIC: "debezium_connect_offsets"
+      STATUS_STORAGE_TOPIC: "debezium_connect_status"
+      CONFIG_STORAGE_REPLICATION_FACTOR: "1"
+      OFFSET_STORAGE_REPLICATION_FACTOR: "1"
+      STATUS_STORAGE_REPLICATION_FACTOR: "1"
+      KEY_CONVERTER: "org.apache.kafka.connect.storage.StringConverter"
+      VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter" # ĐÚNG
+      CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "localhost"
+    networks:
+      - microservice-network
+  # -------------------------------------------
+  # Application Services
+  # -------------------------------------------
+  orderservice:
+    build:
+      context: ./orderservice # Đường dẫn đến project OrderService
+      dockerfile: Dockerfile
+    container_name: orderservice
+    hostname: orderservice
+    depends_on:
+      - kafka
+      - schema-registry
+      - postgres_order
+      - connect # Thêm depends_on Debezium
+    ports:
+      - "8888:8888" # Map port API của OrderService
+    environment:
+      SPRING_PROFILES_ACTIVE: docker # Kích hoạt profile docker
+      # Biến môi trường cho kết nối DB (sẽ được đọc bởi application-docker.properties)
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_order:5432/orderservice
+      SPRING_DATASOURCE_PASSWORD: thanh0909246319
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
+      # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
+      # SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+    networks:
+      - microservice-network
+
+  paymentservice:
+    build:
+      context: ./paymentservice # Đường dẫn đến project PaymentService
+      dockerfile: Dockerfile
+    container_name: paymentservice
+    hostname: paymentservice
+    depends_on:
+      - kafka
+      - schema-registry
+      - postgres_payment
+      - connect # Thêm depends_on Debezium
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_payment:5432/paymentservice
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: thanh0909246319
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - microservice-network
+
+  # restaurantservice:
+  #   build:
+  #     context: ./restaurantservice # Đường dẫn đến project RestaurantService
+  #     dockerfile: Dockerfile
+  #   container_name: restaurantservice
+  #   hostname: restaurantservice
+  #   depends_on:
+  #     - kafka
+networks:
+  microservice-network:
+    driver: bridge
+
+
+
+volumes:
+  postgres_order_data:
+  postgres_payment_data:
+  # postgres_restaurant_data:
+
+
+    
