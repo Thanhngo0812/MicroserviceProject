@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="restaurant-container" />
-        <module name="restaurant-domain" />
+        <module name="restaurant-domain-core" />
         <module name="restaurant-dataaccess" />
         <module name="restaurant-application-service" />
         <module name="restaurant-messaging" />
@@ -19,7 +19,8 @@
       <module name="restaurant-application-service" options="-parameters" />
       <module name="restaurant-container" options="-parameters" />
       <module name="restaurant-dataaccess" options="-parameters" />
-      <module name="restaurant-domain" options="-parameters" />
+      <module name="restaurant-domain" options="" />
+      <module name="restaurant-domain-core" options="-parameters" />
       <module name="restaurant-messaging" options="-parameters" />
     </option>
   </component>

@@ -4,7 +4,9 @@
     <file url="file://$PROJECT_DIR$/restaurant-application-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restaurant-container/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restaurant-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-domain/restaurant-domain-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restaurant-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restaurant-messaging/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * Entity: CreditHistory - Ghi lại lịch sử giao dịch tín dụng (Cộng/Trừ).
  */
-public class CreditHistory extends BaseEntity<CreditHistoryId> {
+public class CreditHistory extends  AggregateRoot<CreditHistoryId> {
 
     private final CustomerId customerId;
     private final OrderId orderId; // Thêm trường này để liên kết với Order
