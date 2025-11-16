@@ -2,11 +2,12 @@ package com.ct08SWA.orderservice.orderdomaincore.entity;
 
 import com.ct08SWA.orderservice.orderdomaincore.event.OrderEvent;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public abstract class AggregateRoot<ID> extends BaseEntity<ID> {
-     private List<OrderEvent> domainEvents;
+     private List<OrderEvent> domainEvents= new ArrayList<>();
     public void addDomainEvent(OrderEvent event) {
         this.domainEvents.add(event);
         // Bạn cũng có thể log ở đây nếu cần

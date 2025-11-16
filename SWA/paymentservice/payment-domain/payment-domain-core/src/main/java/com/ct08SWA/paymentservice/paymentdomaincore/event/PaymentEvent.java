@@ -30,6 +30,7 @@ public abstract class PaymentEvent {
         this.customerId = customerId;
         this.price = price;
         this.createdAt = createdAt;
+        this.Status = Status;
     }
 
     // --- Getters and Setters (BẮT BUỘC cho Jackson) ---

@@ -6,7 +6,6 @@ import com.ct08SWA.paymentservice.paymentdataaccess.entity.PaymentOutboxEntity;
 import com.ct08SWA.paymentservice.paymentdataaccess.mapper.PaymentOutboxDataAccessMapper;
 import com.ct08SWA.paymentservice.paymentdataaccess.repository.PaymentOutboxJpaRepository;
 import com.ct08SWA.paymentservice.paymentdomaincore.event.PaymentEvent;
-import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OutboxStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

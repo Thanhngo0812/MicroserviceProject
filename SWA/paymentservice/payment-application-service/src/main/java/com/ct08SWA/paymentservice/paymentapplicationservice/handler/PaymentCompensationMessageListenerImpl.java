@@ -5,6 +5,7 @@ import com.ct08SWA.paymentservice.paymentapplicationservice.dto.inputdto.Payment
 import com.ct08SWA.paymentservice.paymentapplicationservice.exception.PaymentApplicationServiceException;
 import com.ct08SWA.paymentservice.paymentapplicationservice.ports.inputports.PaymentCompensationMessageListener;
 
+import com.ct08SWA.paymentservice.paymentapplicationservice.ports.outputports.PaymentOutboxRepository;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.CreditEntry;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.CreditHistory;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.Payment;
@@ -14,6 +15,7 @@ import com.ct08SWA.paymentservice.paymentdomaincore.service.PaymentDomainService
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.CustomerId;
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OrderId;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +28,17 @@ import java.util.Optional;
 public class PaymentCompensationMessageListenerImpl implements PaymentCompensationMessageListener {
     private final PaymentCompensationHelper paymentCompensationHelper;
     private final PaymentDomainService paymentDomainService;
-
+    private final PaymentOutboxRepository paymentOutboxRepository;
+    @Value("${payment-service.kafka.payment-response-topic}")
+    private String paymentResponseTopic;
 
     public PaymentCompensationMessageListenerImpl(PaymentCompensationHelper paymentCompensationHelper,
-                                                          PaymentDomainService paymentDomainService
-
+                                                          PaymentDomainService paymentDomainService,
+    PaymentOutboxRepository paymentOutboxRepository
                                                ) {
        this.paymentCompensationHelper=paymentCompensationHelper;
         this.paymentDomainService = paymentDomainService;
+        this.paymentOutboxRepository=paymentOutboxRepository;
     }
 
     /**
@@ -70,7 +75,7 @@ public class PaymentCompensationMessageListenerImpl implements PaymentCompensati
                     payment, creditEntry, creditHistories, failureMessages);
             // 4. SỬA LẠI: Gọi hàm helper để LƯU và PUBLISH
             paymentCompensationHelper.persistAndPublishCompensation(payment, creditEntry, creditHistory);
-
+            paymentOutboxRepository.save(payment.getDomainEvents().get(0),payment.getId().getValue(),paymentResponseTopic);
             log.info("Compensation (refund) successful for order id: {}", request.getOrderId());
 
         } catch (PaymentDomainException e) {

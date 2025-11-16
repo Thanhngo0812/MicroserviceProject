@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   # -------------------------------------------
-  # Infrastructure Services (Kafka, ZK, Schema Registry)
+  # Infrastructure Services (Kafka, ZK)
   # -------------------------------------------
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -45,36 +45,17 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: "kraft-cluster"
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
-      
-      # 1. Khai báo địa chỉ Schema Registry (Dùng KAFKA_CLUSTERS_0_)
-      KAFKA_CLUSTERS_0_SCHEMAREGISTRY: "http://schema-registry:8081"
-      
+
       # 2. BƯỚC QUAN TRỌNG: Chỉ định Deserializer cho VALUE
-      KAFKA_CLUSTERS_0_PROPERTIES_VALUE_DESERIALIZER: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      KAFKA_CLUSTERS_0_PROPERTIES_VALUE_DESERIALIZER: "org.apache.kafka.common.serialization.StringDeserializer"
       
       # 3. (Tùy chọn) Chỉ định Deserializer cho KEY (Nếu key là String)
       KAFKA_CLUSTERS_0_PROPERTIES_KEY_DESERIALIZER: "org.apache.kafka.common.serialization.StringDeserializer"
       
     depends_on:
       - kafka
-      - schema-registry 
     networks:
       - microservice-network
-
-  schema-registry:
-    image: confluentinc/cp-schema-registry:7.4.0
-    container_name: schema-registry
-    hostname: schema-registry
-    depends_on:
-      - kafka
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka:29092' # Kết nối Kafka qua internal listener
-    networks:
-      - microservice-network
-
 
   # -------------------------------------------
   # Database Services (One per microservice)
@@ -155,7 +136,6 @@ services:
     hostname: debezium-connect
     depends_on:
       - kafka
-      - schema-registry
       - postgres_order
       - postgres_payment
     ports:
@@ -188,7 +168,6 @@ services:
     hostname: orderservice
     depends_on:
       - kafka
-      - schema-registry
       - postgres_order
       - connect # Thêm depends_on Debezium
     ports:
@@ -202,7 +181,6 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
       # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
-      # SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
     networks:
       - microservice-network
 
@@ -214,7 +192,6 @@ services:
     hostname: paymentservice
     depends_on:
       - kafka
-      - schema-registry
       - postgres_payment
       - connect # Thêm depends_on Debezium
 

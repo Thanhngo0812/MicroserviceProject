@@ -42,22 +42,22 @@ public class PaymentResponseKafkaListener {
             DebeziumOutboxMessage outboxMessage = objectMapper.readValue(jsonString, DebeziumOutboxMessage.class);
             String innerJsonPayload = outboxMessage.payload;
             paymentResponse = objectMapper.readValue(innerJsonPayload, PaymentResponse.class);
-            if (Objects.equals(paymentResponse.getPaymentStatus(), "COMPLETED")) {
+            if (Objects.equals(paymentResponse.getStatus(), "COMPLETED")) {
 
                 paymentResponseMessageListener.paymentCompleted(paymentResponse);
 
-            } else if (Objects.equals(paymentResponse.getPaymentStatus(), "FAILED")) {
+            } else if (Objects.equals(paymentResponse.getStatus(), "FAILED")) {
 
                 // 4. Xử lý thất bại (CANCELLED)
                 paymentResponseMessageListener.paymentFailed(paymentResponse);
-            } else if (Objects.equals(paymentResponse.getPaymentStatus(), "CANCELLED")) {
+            } else if (Objects.equals(paymentResponse.getStatus(), "CANCELLED")) {
 
                 // 4. Xử lý thất bại (CANCELLED)
                 paymentResponseMessageListener.paymentCancelled(paymentResponse);
 
             } else {
                 log.error("Received unexpected PaymentStatus: {} for Order ID: {}",
-                        paymentResponse.getPaymentStatus(), paymentResponse.getOrderId());
+                        paymentResponse.getStatus(), paymentResponse.getOrderId());
             }
         } catch (Exception e) {
             String orderId = (paymentResponse != null) ? paymentResponse.getOrderId().toString() : "UNKNOWN (Failed Parsing/Deserialization)";

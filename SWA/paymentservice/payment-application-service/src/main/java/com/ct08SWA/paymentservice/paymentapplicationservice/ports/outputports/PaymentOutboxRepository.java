@@ -2,10 +2,6 @@ package com.ct08SWA.paymentservice.paymentapplicationservice.ports.outputports;
 
 
 import com.ct08SWA.paymentservice.paymentdomaincore.event.PaymentEvent;
-import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OutboxStatus;
-
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 /**

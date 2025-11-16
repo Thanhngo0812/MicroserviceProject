@@ -60,6 +60,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
 
         // 5. Cập nhật trạng thái Payment
         payment.completePayment(); // Chuyển status sang COMPLETED
+
         PaymentCompletedEvent paymentCompletedEvent = new PaymentCompletedEvent(payment.getId().getValue(),
                 payment.getOrderId().getValue(),
                 payment.getCustomerId().getValue(),

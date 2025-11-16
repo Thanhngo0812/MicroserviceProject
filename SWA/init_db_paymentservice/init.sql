@@ -55,7 +55,7 @@ CREATE TABLE payment.payment_outbox (
     saga_id UUID NOT NULL, -- Thường là Order ID, để theo dõi SAGA
     created_at TIMESTAMP WITH TIME ZONE NOT NULL,
     event_type VARCHAR(255) NOT NULL, -- Tên Event, ví dụ: "PaymentCompleted", "PaymentCancelled"
-    payload TEXT NOT NULL, 
+    payload JSONB NOT NULL
 );
 ALTER DATABASE paymentservice SET bytea_output = 'hex';
 
@@ -64,8 +64,6 @@ CREATE INDEX idx_payments_customer_id ON payment.payments (customer_id);
 CREATE INDEX idx_credit_history_customer_id ON payment.credit_history (customer_id);
 CREATE INDEX idx_credit_history_order_id ON payment.credit_history (order_id);
 
--- Thêm index cho Outbox Poller
-CREATE INDEX idx_payment_outbox_status ON payment.payment_outbox (outbox_status);
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Thêm dữ liệu mẫu (TÙY CHỌN - dùng để test) --

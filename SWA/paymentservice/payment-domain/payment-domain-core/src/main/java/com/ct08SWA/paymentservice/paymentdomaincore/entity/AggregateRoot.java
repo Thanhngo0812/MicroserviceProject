@@ -2,12 +2,13 @@ package com.ct08SWA.paymentservice.paymentdomaincore.entity;
 
 import com.ct08SWA.paymentservice.paymentdomaincore.event.PaymentEvent;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 // Lớp cơ sở cho Aggregate Roots
 public abstract class AggregateRoot<ID> extends BaseEntity<ID> {
-    private List<PaymentEvent> domainEvents;
+    private List<PaymentEvent> domainEvents= new ArrayList<>();
     public void addDomainEvent(PaymentEvent event) {
         this.domainEvents.add(event);
         // Bạn cũng có thể log ở đây nếu cần

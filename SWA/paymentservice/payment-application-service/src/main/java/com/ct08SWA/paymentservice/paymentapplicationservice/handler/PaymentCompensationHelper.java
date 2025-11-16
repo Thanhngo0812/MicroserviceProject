@@ -5,20 +5,15 @@ import com.ct08SWA.paymentservice.paymentapplicationservice.ports.outputports.*;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.CreditEntry;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.CreditHistory;
 import com.ct08SWA.paymentservice.paymentdomaincore.entity.Payment;
-import com.ct08SWA.paymentservice.paymentdomaincore.event.PaymentCancelledEvent;
 
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.CustomerId;
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OrderId;
-import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OutboxStatus;
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.TransactionType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static java.time.ZoneOffset.UTC;
 
@@ -29,19 +24,14 @@ public class PaymentCompensationHelper {
     private final PaymentRepository paymentRepository;
     private final CreditEntryRepository creditEntryRepository;
     private final CreditHistoryRepository creditHistoryRepository;
-    private final ObjectMapper objectMapper;
-    private final PaymentOutboxRepository paymentOutboxRepository;
     public PaymentCompensationHelper(
                                                   PaymentRepository paymentRepository,
                                                   CreditEntryRepository creditEntryRepository,
-                                                  CreditHistoryRepository creditHistoryRepository,PaymentOutboxRepository paymentOutboxRepository,
-                                                  ObjectMapper objectMapper) {
+                                                  CreditHistoryRepository creditHistoryRepository) {
 
         this.paymentRepository = paymentRepository;
         this.creditEntryRepository = creditEntryRepository;
         this.creditHistoryRepository = creditHistoryRepository;
-        this.paymentOutboxRepository = paymentOutboxRepository;
-        this.objectMapper = objectMapper;
     }
 
     /**

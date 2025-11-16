@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import com.ct08SWA.orderservice.orderdomaincore.entity.Order;
 import com.ct08SWA.orderservice.orderdataaccess.entity.OrderEntity;
@@ -30,8 +31,12 @@ public class OrderDataAccessMapper {
                 .trackingId(order.getTrackingId() != null ? order.getTrackingId().getValue() : null)
                 .price(order.getPrice() != null ? order.getPrice().getAmount() : null)
                 .orderStatus(mapOrderStatus(order.getOrderStatus()))
-                .failureMessages(order.getFailureMessages() != null ? 
-                    String.join(",", order.getFailureMessages()) : null)
+                .failureMessages(   order.getFailureMessages() != null ?
+                        order.getFailureMessages().stream()
+                                .filter(Objects::nonNull)      // loại null
+                                .filter(s -> !s.isBlank())     // loại chuỗi rỗng
+                                .collect(Collectors.joining(","))
+                        : null)
                 .createdAt(java.time.ZonedDateTime.now())
                 .build();
 

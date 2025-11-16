@@ -29,7 +29,7 @@ public class PaymentResponse {
     private final BigDecimal price;
 
     // Trạng thái thanh toán (COMPLETED/FAILED/CANCELLED)
-    private final String paymentStatus;
+    private final String status;
 
     // Thời điểm sự kiện được tạo
     private final ZonedDateTime createdAt;

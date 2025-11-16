@@ -13,16 +13,4 @@ import java.util.UUID;
  */
 @Repository
 public interface OrderOutboxJpaRepository extends JpaRepository<OrderOutboxEntity, UUID> {
-
-    /**
-     * Truy vấn (derived query) để tìm các outbox message
-     * theo trạng thái (ví dụ: PENDING).
-     * Đây là phương thức mà OutboxPoller sẽ gọi.
-     */
-    Optional<List<OrderOutboxEntity>> findByStatus(OutboxStatus status);
-
-    /**
-     * (Tùy chọn) Xóa các message đã hoàn thành để dọn dẹp bảng outbox.
-     */
-    void deleteByStatus(OutboxStatus status);
 }

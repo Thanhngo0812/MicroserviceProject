@@ -72,11 +72,22 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
             log.warn("Payment failed for order id: {}. Reason: {}", paymentRequest.getOrderId(), e.getMessage());
             // failureMessages đã được cập nhật bên trong Domain Service
             paymentRequestHelper.persistPaymentFailure(payment, failureMessages); // <-- Gọi hàm lưu và publish thất bại
-
+            PaymentFailedEvent failedEvent = new PaymentFailedEvent(
+                    payment.getId() != null ? payment.getId().getValue() : null,
+                    payment.getOrderId().getValue(),
+                    payment.getCustomerId().getValue(),
+                    payment.getPrice().getAmount(),
+                    ZonedDateTime.now(),
+                    failureMessages,
+                    payment.getStatus().toString()
+            );
+            payment.addDomainEvent(failedEvent);
+            paymentOutboxRepository.save(payment.getDomainEvents().get(0),payment.getId().getValue(),paymentResponseTopic);
         } catch (Exception e) {
             log.error("Unexpected error processing payment for order id: {}. Error: {}", paymentRequest.getOrderId(), e.getMessage(), e);
             if (payment != null) {
-                failureMessages.add("Unexpected error during processing.");
+                failureMessages.add("Unexpected error processing payment.");
+                paymentRequestHelper.persistPaymentFailure(payment, failureMessages);
                 PaymentFailedEvent failedEvent = new PaymentFailedEvent(
                         payment.getId() != null ? payment.getId().getValue() : null,
                         payment.getOrderId().getValue(),
@@ -88,7 +99,6 @@ public class PaymentRequestMessageListenerImpl implements PaymentRequestMessageL
                 );
                 // Gắn event vào Payment entity
                 payment.addDomainEvent(failedEvent);
-                paymentRequestHelper.persistPaymentFailure(payment, failureMessages);
                 paymentOutboxRepository.save(payment.getDomainEvents().get(0),payment.getId().getValue(),paymentResponseTopic);
 
             }

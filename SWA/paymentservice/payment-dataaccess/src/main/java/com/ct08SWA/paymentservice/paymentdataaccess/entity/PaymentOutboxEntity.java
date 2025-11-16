@@ -2,9 +2,11 @@ package com.ct08SWA.paymentservice.paymentdataaccess.entity;
 
 
 // Import Enum "sạch" từ Domain Core
-import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OutboxStatus;
 
 import jakarta.persistence.*; // Dùng jakarta
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -29,8 +31,8 @@ public class PaymentOutboxEntity {
     @Column(name = "event_type", nullable = false)
     private String eventType;
 
-    @Lob // @Lob (Large Object) là cách tốt để báo cho JPA biết đây là cột lớn (TEXT/CLOB)
-    @Column(name = "payload",columnDefinition = "TEXT")
+    @JdbcTypeCode(SqlTypes.JSON) // Cú pháp hiện đại cho Hibernate 6+
+    @Column(name = "payload", columnDefinition = "JSON", nullable = false)
     private String payload; // Kiểu TEXT trong CSDL
 
 
@@ -92,10 +94,8 @@ public class PaymentOutboxEntity {
         private UUID id;
         private UUID sagaId;
         private ZonedDateTime createdAt;
-        private ZonedDateTime processedAt;
         private String eventType;
         private String payload;
-        private OutboxStatus status;
 
         private Builder() {}
 
