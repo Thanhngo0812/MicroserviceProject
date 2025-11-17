@@ -1,4 +1,0 @@
-// registry debezium for Order
-curl -X POST -H "Content-Type: application/json" --data @depezium-order-connector - Copy.json http://localhost:8083/connectors
-//registry debezium for Payment
-curl -X POST -H "Content-Type: application/json" --data @depezium-payment-connector - Copy.json http://localhost:8083/connectors
