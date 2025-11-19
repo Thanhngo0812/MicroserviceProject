@@ -7,5 +7,12 @@
   </parent>
   <artifactId>order-domain-core</artifactId>
   <name>order-domain-core</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

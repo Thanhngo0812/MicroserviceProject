@@ -12,7 +12,7 @@ public class RestaurantResponse {
     private UUID approvalId;
     private UUID orderId;
     private UUID restaurantId;
-    private String Status;
+    private String status;
     private ZonedDateTime createdAt;
     private List<String> failureMessages;
 
