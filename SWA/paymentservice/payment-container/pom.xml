@@ -7,6 +7,10 @@
     </parent>
     <artifactId>payment-container</artifactId>
     <name>payment-container</name>
+    <properties>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>

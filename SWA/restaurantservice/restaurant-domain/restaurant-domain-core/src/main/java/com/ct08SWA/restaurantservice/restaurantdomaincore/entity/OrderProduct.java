@@ -1,6 +1,6 @@
 package com.ct08SWA.restaurantservice.restaurantdomaincore.entity;
 
-
+import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.*;
 /**
  * Entity: OrderProduct (Món ăn trong đơn hàng).
  * Đây là phiên bản "rút gọn", chỉ chứa thông tin mà Restaurant Service cần

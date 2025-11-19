@@ -1,0 +1,6 @@
+// registry debezium for Order
+curl -X POST -H "Content-Type: application/json" --data @debezium-order-connector.json http://localhost:8083/connectors
+//registry debezium for Payment
+curl -X POST -H "Content-Type: application/json" --data @debezium-payment-connector.json http://localhost:8083/connectors
+//registry debezium for Restaurant
+curl -X POST -H "Content-Type: application/json" --data @debezium-restaurant-connector.json http://localhost:8083/connectors

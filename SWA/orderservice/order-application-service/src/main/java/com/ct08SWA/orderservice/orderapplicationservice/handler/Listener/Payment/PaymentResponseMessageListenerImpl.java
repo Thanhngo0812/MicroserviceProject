@@ -22,8 +22,10 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
     private final OrderRepository orderRepository;
     private final OrderOutboxRepository orderOutboxRepository;
     private final OrderDomainService orderDomainService;
-    @Value("${payment-service.kafka.order-cancel-topic}")
+    @Value("${order-service.kafka.order-cancel-topic}")
     private String OrderCancelEventTopic;
+    @Value("${order-service.kafka.order-paid-topic}")
+    private String OrderPaidEventTopic;
     public PaymentResponseMessageListenerImpl(OrderRepository orderRepository
                                               ,OrderOutboxRepository orderOutboxRepository,OrderDomainService orderDomainService
     ) {
@@ -49,8 +51,9 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
                 // KỊCH BẢN 1: HAPPY PATH (Luồng 1)
                 // Order đang PENDING, Payment thành công.
                 log.info("Happy Path: Order status is PENDING. Updating to PAID.");
-                order.pay(); // Chuyển sang PAID
+                orderDomainService.payOrder(order);
                 Order savedOrder = orderRepository.save(order);
+                orderOutboxRepository.save(order.getDomainEvents().get(0),order.getId().getValue(),OrderPaidEventTopic );
 
                 // Publish Event 3 (Yêu cầu Restaurant duyệt đơn)
 //                OrderPaidEvent orderPaidEvent = new OrderPaidEvent(savedOrder, ZonedDateTime.now(ZoneId.of("UTC")));
@@ -109,7 +112,7 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
         orderDomainService.cancelOrder(order,paymentResponse.getFailureMessages());
         orderRepository.save(order);
         orderOutboxRepository.save(order.getDomainEvents().get(0),order.getId().getValue(),OrderCancelEventTopic);
-        log.info("Order status updated to PAYMENT_FAILED (Payment Failed) for order id: {}", order.getId().getValue());
+        log.info("Order status updated to CANCELLED for order id: {}", order.getId().getValue());
 
         // KHÔNG cần gửi event tiếp theo vì SAGA kết thúc.
     }

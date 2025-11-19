@@ -1,5 +1,6 @@
 package com.ct08SWA.restaurantservice.restaurantdomaincore.entity;
 import java.util.Objects;
+import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.*;
 
 /**
  * Entity: Product (Món ăn) - Là một phần của Aggregate 'Restaurant'.

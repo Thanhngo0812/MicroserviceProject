@@ -1,8 +1,15 @@
 package com.ct08SWA.restaurantservice.restaurantdomaincore.entity;
 
+import com.ct08SWA.restaurantservice.restaurantdomaincore.event.RestaurantApprovedEvent;
+import com.ct08SWA.restaurantservice.restaurantdomaincore.event.RestaurantRejectedEvent;
+import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.*;
 
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static java.time.ZoneOffset.UTC;
 
 /**
  * Aggregate Root: OrderApproval (Phiếu duyệt đơn hàng).
@@ -17,8 +24,9 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
     private final List<OrderProduct> products;
     private ApprovalStatus approvalStatus;
     private List<String> failureMessages;
+    private final List<String> warnings = new ArrayList<>();
 
-    // Constructor (private, dùng Builder)
+    // --- Constructor (private, dùng Builder) ---
     private OrderApproval(Builder builder) {
         super.setId(builder.id);
         this.restaurantId = builder.restaurantId;
@@ -26,6 +34,7 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
         this.products = builder.products;
         this.approvalStatus = builder.approvalStatus;
         this.failureMessages = builder.failureMessages;
+        // warnings được tự khởi tạo, không cần builder
     }
 
     // --- Logic nghiệp vụ (Business Logic) ---
@@ -35,7 +44,7 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
      */
     public void initialize() {
         setId(new OrderApprovalId(UUID.randomUUID()));
-        this.approvalStatus = ApprovalStatus.PENDING;
+        this.approvalStatus = ApprovalStatus.WAITING;
     }
 
     /**
@@ -43,6 +52,13 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
      */
     public void approve() {
         this.approvalStatus = ApprovalStatus.APPROVED;
+        this.addDomainEvent(new RestaurantApprovedEvent(
+                this.getId().getValue(),
+                this.getOrderId().getValue(),
+                this.getRestaurantId().getValue(),
+                "APPROVED",
+                ZonedDateTime.now(UTC)
+        ));
     }
 
     /**
@@ -51,6 +67,37 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
     public void reject(List<String> failureMessages) {
         this.approvalStatus = ApprovalStatus.REJECTED;
         this.failureMessages = failureMessages;
+        this.addDomainEvent( new RestaurantRejectedEvent(
+                        this.getId().getValue(),
+                        this.getOrderId().getValue(),
+                        this.getRestaurantId().getValue(),
+                        ZonedDateTime.now(UTC),
+                        "REJECTED",
+                        this.failureMessages
+                ));
+    }
+
+    public void cancel(List<String> failureMessages) {
+        this.approvalStatus = ApprovalStatus.CANCELLED;
+        this.failureMessages = failureMessages;
+    }
+
+
+    public void paid() {
+        this.approvalStatus = ApprovalStatus.PENDING;
+    }
+
+    // --- Logic Cảnh báo (Code của bạn) ---
+
+    /**
+     * Thêm một cảnh báo (non-fatal) trong quá trình validate.
+     * Ví dụ: "Giá món ăn đã thay đổi".
+     * (Được gọi bởi RestaurantDomainServiceImpl)
+     */
+    public void addWarning(String message) {
+        if (message != null && !message.isEmpty()) {
+            this.warnings.add(message);
+        }
     }
 
     // --- Getters ---
@@ -59,6 +106,9 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
     public List<OrderProduct> getProducts() { return products; }
     public ApprovalStatus getApprovalStatus() { return approvalStatus; }
     public List<String> getFailureMessages() { return failureMessages; }
+
+    // Getter cho code của bạn
+    public List<String> getWarnings() { return warnings; }
 
     // --- Builder ---
     public static Builder builder() { return new Builder(); }
@@ -70,6 +120,7 @@ public class OrderApproval extends AggregateRoot<OrderApprovalId> {
         private List<OrderProduct> products;
         private ApprovalStatus approvalStatus;
         private List<String> failureMessages;
+        // warnings không cần trong builder
 
         private Builder() {}
 

@@ -8,6 +8,7 @@ import com.ct08SWA.orderservice.orderdomaincore.entity.Order;
 import com.ct08SWA.orderservice.orderdomaincore.entity.OrderItem;
 import com.ct08SWA.orderservice.orderdomaincore.event.OrderCancelledEvent;
 import com.ct08SWA.orderservice.orderdomaincore.event.OrderCreatedEvent;
+import com.ct08SWA.orderservice.orderdomaincore.event.OrderPaidEvent;
 
 import static java.time.ZoneOffset.UTC;
 
@@ -46,6 +47,13 @@ public class OrderDomainServiceImpl implements OrderDomainService {
     @Override
     public void payOrder(Order order) {
         order.pay();
+        OrderPaidEvent event = new OrderPaidEvent(order.getId().getValue(),
+                order.getCustomerId().getValue(),
+                order.getRestaurantId().getValue(),
+                order.getPrice().getAmount(),
+                ZonedDateTime.now(UTC),
+                order.getTrackingId().getValue());
+        order.addDomainEvent(event);
     }
 
     @Override
@@ -69,7 +77,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private OrderCreatedEvent.OrderItemData convertToItemData(OrderItem item) {
         return new OrderCreatedEvent.OrderItemData(
-                item.getOrderId().getValue(),
+                item.getProduct().getId().getValue(),
                 item.getQuantity(),
                 item.getPrice().getAmount(),
                 item.getSubTotal().getAmount()

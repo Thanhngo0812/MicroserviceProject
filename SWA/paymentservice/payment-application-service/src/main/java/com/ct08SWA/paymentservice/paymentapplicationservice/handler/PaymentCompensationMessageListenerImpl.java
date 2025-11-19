@@ -14,6 +14,7 @@ import com.ct08SWA.paymentservice.paymentdomaincore.exception.PaymentDomainExcep
 import com.ct08SWA.paymentservice.paymentdomaincore.service.PaymentDomainService;
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.CustomerId;
 import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.OrderId;
+import com.ct08SWA.paymentservice.paymentdomaincore.valueobject.PaymentStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -67,7 +68,11 @@ public class PaymentCompensationMessageListenerImpl implements PaymentCompensati
                         request.getOrderId());
                 return; // Bỏ qua (Ignore) message trùng lặp
             }
-
+            if(payment.getStatus().equals(PaymentStatus.FAILED)){
+                log.info("Compensation for order id: {} because of the past failures-> do nothing",
+                        request.getOrderId());
+                return; // Bỏ qua (Ignore) message trùng lặp
+            }
             // 3. Gọi Domain Service để thực thi logic nghiệp vụ Hoàn tiền
             // 3. Gọi Domain Service (Sửa 1 - Canvas)
             // (Nó trả về CreditHistory mới)

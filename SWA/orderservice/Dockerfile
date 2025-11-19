@@ -23,6 +23,7 @@ COPY order-messaging/pom.xml order-messaging/
 # - Dmaven.test.skip=true: Bỏ qua biên dịch code test
 # - DskipTests: Bỏ qua chạy test
 # Loại bỏ Dmaven.main.skip=true để cho phép plugin repackage chạy qua
+
 RUN mvn clean dependency:go-offline
 # ----- Lệnh này sẽ: -----
 # 1. Tải TẤT CẢ thư viện bên ngoài (Spring, Kafka,...) về -> OK, Đã cache!

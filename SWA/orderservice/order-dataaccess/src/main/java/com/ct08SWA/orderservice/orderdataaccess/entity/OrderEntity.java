@@ -37,7 +37,7 @@ public class OrderEntity {
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
     
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderItemEntity> items;
 
     // Default constructor

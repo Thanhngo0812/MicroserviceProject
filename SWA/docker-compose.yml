@@ -107,30 +107,31 @@ services:
     networks:
       - microservice-network
 
-  # Tương tự cho RestaurantService nếu cần DB riêng
-  # postgres_restaurant:
-  #   image: postgres:14-alpine
-  #   container_name: postgres_restaurant
-  #   hostname: postgres_restaurant
-  #   ports:
-  #     - "5434:5432"
-  #   environment:
-  #     POSTGRES_DB: restaurantservice
-  #     POSTGRES_USER: restaurant_user
-  #     POSTGRES_PASSWORD: restaurant_password
-  #   volumes:
-  #     - postgres_restaurant_data:/var/lib/postgresql/data
-  #     - ./init_db_restaurantservice:/docker-entrypoint-initdb.d
-  #   networks:
-  #     - microservice-network
-  # -------------------------------------------
+  postgres_restaurant:
+    image: postgres:15
+    container_name: postgres_restaurant
+    hostname: postgres_restaurant
+    ports:
+      - "5434:5432" # Map port DB của PaymentService ra cổng khác (5433) trên local
+    environment:
+      POSTGRES_DB: restaurantservice # Tên DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh0909246319 # Thay bằng password của bạn
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - postgres_restaurant_data:/var/lib/postgresql/data
+      # Map thư mục chứa script init DB của PaymentService
+      - ./init_db_restaurantservice:/docker-entrypoint-initdb.d
+    networks:
+      - microservice-network
+
   # DỊCH VỤ DEBEZIUM (KAFKA CONNECT)
   # -------------------------------------------
   # -------------------------------------------
   connect:
-    #build:
-     # context: ./custom-connect
-      #dockerfile: Dockerfile
     image: debezium/connect:1.9
     container_name: debezium-connect
     hostname: debezium-connect
@@ -155,6 +156,18 @@ services:
       CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_REST_ADVERTISED_HOST_NAME: "localhost"
+    networks:
+      - microservice-network
+
+  debezium-ui:
+    image: debezium/debezium-ui:latest
+    container_name: debezium-ui
+    ports:
+      - "8081:8080" # Map ra cổng 8081 (vì 8080 đã dùng cho kafka-ui)
+    environment:
+      KAFKA_CONNECT_URIS: http://debezium-connect:8083 # Kết nối tới service connect
+    depends_on:
+      - connect
     networks:
       - microservice-network
   # -------------------------------------------
@@ -204,14 +217,29 @@ services:
     networks:
       - microservice-network
 
-  # restaurantservice:
-  #   build:
-  #     context: ./restaurantservice # Đường dẫn đến project RestaurantService
-  #     dockerfile: Dockerfile
-  #   container_name: restaurantservice
-  #   hostname: restaurantservice
-  #   depends_on:
-  #     - kafka
+  restaurantservice:
+    build:
+      context: ./restaurantservice # Đường dẫn đến project OrderService
+      dockerfile: Dockerfile
+    container_name: restaurantservice
+    hostname: restaurantservice
+    depends_on:
+      - kafka
+      - postgres_restaurant
+      - connect # Thêm depends_on Debezium
+    ports:
+      - "8886:8886"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker # Kích hoạt profile docker
+      # Biến môi trường cho kết nối DB (sẽ được đọc bởi application-docker.properties)
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_restaurant:5432/restaurantservice
+      SPRING_DATASOURCE_PASSWORD: thanh0909246319
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
+      # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
+    networks:
+      - microservice-network
 networks:
   microservice-network:
     driver: bridge
@@ -221,7 +249,7 @@ networks:
 volumes:
   postgres_order_data:
   postgres_payment_data:
-  # postgres_restaurant_data:
+  postgres_restaurant_data:
 
 
     

@@ -7,6 +7,9 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import com.ct08SWA.restaurantservice.restaurantdomaincore.exception.RestaurantDomainException;
+import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.*;
+
 /**
  * Aggregate Root: Restaurant (Nhà hàng).
  * Chứa thông tin nhà hàng và Menu (danh sách Products).
@@ -38,7 +41,7 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
      */
     public void validateOrder(OrderApproval orderApproval) {
         if (!this.active) {
-            throw new com.ct08SWA.restaurant.domain.exception.RestaurantDomainException(
+            throw new RestaurantDomainException(
                     "Nhà hàng " + this.name + " (ID: " + this.getId().getValue() + ") không hoạt động (inactive)!"
             );
         }
@@ -55,27 +58,31 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
 
             // 1. Kiểm tra Món ăn có tồn tại trong Menu không
             if (productInMenu == null) {
-                throw new com.ct08SWA.restaurant.domain.exception.RestaurantDomainException(
+                throw new RestaurantDomainException(
                         "Món ăn (Product ID: " + item.getId().getValue() + ") không tìm thấy trong menu của nhà hàng."
                 );
             }
 
             // 2. Kiểm tra Món ăn có Sẵn hàng (Available) không
             if (!productInMenu.isAvailable()) {
-                throw new com.ct08SWA.restaurant.domain.exception.RestaurantDomainException(
+                throw new RestaurantDomainException(
                         "Món ăn '" + productInMenu.getName() + "' (ID: " + item.getId().getValue() + ") đã hết hàng (unavailable)."
                 );
             }
 
             // 3. (Tùy chọn) Kiểm tra giá (Price) có khớp không
             if (!productInMenu.getPrice().equals(item.getPrice())) {
-                log.warn("Giá của món ăn {} đã thay đổi (Request: {}, Menu: {}).",
-                        item.getId().getValue(), item.getPrice().getAmount(), productInMenu.getPrice().getAmount());
-                // Tạm thời cho qua, chỉ cảnh báo
+                orderApproval.addWarning(
+                        String.format(
+                                "Giá của món ăn %s đã thay đổi (Request: %s, Menu: %s).",
+                                item.getId().getValue(),
+                                item.getPrice().getAmount(),
+                                productInMenu.getPrice().getAmount()
+                        )
+                );
             }
         }
 
-        log.info("Đơn hàng (Order ID: {}) đã được xác thực (validated) thành công bởi nhà hàng.", orderApproval.getOrderId().getValue());
     }
 
 

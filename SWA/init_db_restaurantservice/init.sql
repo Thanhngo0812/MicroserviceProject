@@ -3,9 +3,11 @@ CREATE SCHEMA IF NOT EXISTS restaurant;
 
 -- Trạng thái duyệt đơn (Approval Status)
 CREATE TYPE restaurant.approval_status AS ENUM (
+    'WAITING',
     'PENDING',  -- Đang chờ duyệt
     'APPROVED', -- Đã duyệt (OK)
-    'REJECTED'  -- Đã từ chối (ví dụ: hết món)
+    'REJECTED'  -- Đã từ chối (ví dụ: hết món),
+    'CANCELLED'
 );
 
 -- Bảng lưu thông tin nhà hàng (đơn giản)
@@ -35,27 +37,21 @@ CREATE TABLE restaurant.order_approvals (
     order_id UUID NOT NULL UNIQUE, -- Quan trọng: Đảm bảo 1 Order chỉ được duyệt 1 lần
     status restaurant.approval_status NOT NULL,
     failure_messages TEXT,
+    order_approval_warnings TEXT,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
--- Bảng Outbox (Để gửi phản hồi APPROVED/REJECTED an toàn)
-CREATE TYPE restaurant.outbox_status AS ENUM (
-    'PENDING', 'COMPLETED', 'FAILED'
-);
 
 CREATE TABLE restaurant.restaurant_outbox (
-    id UUID NOT NULL PRIMARY KEY,
-    saga_id UUID NOT NULL, -- Chính là Order ID
-    created_at TIMESTAMP WITH TIME ZONE NOT NULL,
-    processed_at TIMESTAMP WITH TIME ZONE,
-    event_type VARCHAR(255) NOT NULL, -- Tên Event (ví dụ: RestaurantApproved, RestaurantRejected)
-    payload JSONB NOT NULL, -- Nội dung Event (JSON "phẳng")
-    outbox_status restaurant.outbox_status NOT NULL
+        id UUID NOT NULL PRIMARY KEY,
+        saga_id UUID NOT NULL, -- Thường là Order ID, để theo dõi SAGA
+        created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+        event_type VARCHAR(255) NOT NULL, -- Tên Event, ví dụ: "PaymentCompleted", "PaymentCancelled"
+        payload JSONB NOT NULL
 );
 
 -- Indexes
 CREATE INDEX idx_restaurant_products_restaurant_id ON restaurant.restaurant_products (restaurant_id);
-CREATE INDEX idx_restaurant_outbox_status ON restaurant.restaurant_outbox (outbox_status);
 
 -- -- -- -- -- -- -- -- -- -- --
 -- Thêm dữ liệu mẫu (ĐỂ TEST) --

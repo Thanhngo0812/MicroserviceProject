@@ -72,6 +72,6 @@ CREATE INDEX idx_credit_history_order_id ON payment.credit_history (order_id);
 -- Giả sử có một khách hàng với ID này và số dư ban đầu là 1000
 -- Lưu ý: Customer ID ở đây phải khớp với customer_id trong order request
 INSERT INTO payment.credit_entry (id, customer_id, total_credit_amount)
-VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb49', 'd215b5f8-0249-4dc5-89a3-51fd148cfb41', 1000.00)
+VALUES ('d215b5f8-0249-4dc5-89a3-51fd148cfb49', 'd215b5f8-0249-4dc5-89a3-51fd148cfb41', 10000.00)
 ON CONFLICT (customer_id) DO NOTHING; -- Tránh lỗi nếu customer_id đã tồn tại
 

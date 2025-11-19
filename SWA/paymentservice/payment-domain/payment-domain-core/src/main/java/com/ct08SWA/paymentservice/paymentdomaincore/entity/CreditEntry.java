@@ -19,7 +19,7 @@ public class CreditEntry extends AggregateRoot<CreditEntryId> {
     public void subtractCreditAmount(Money amount) {
         totalCreditAmount = totalCreditAmount.subtract(amount);
         System.out.println(totalCreditAmount.toString());
-        if (!totalCreditAmount.isGreaterThanZero() && !totalCreditAmount.equals(Money.ZERO)) {
+        if (!totalCreditAmount.isGreaterThanZero()) {
             throw new com.ct08SWA.paymentservice.paymentdomaincore.exception.PaymentDomainException("Customer credit balance cannot be negative!");
         }
     }

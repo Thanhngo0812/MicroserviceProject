@@ -1,0 +1,24 @@
+{
+  "name": "restaurantservice-outbox-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres_restaurant",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "thanh0909246319",
+    "database.dbname": "restaurantservice",
+    "database.server.name": "restaurant-db-server",
+    "topic.prefix": "dbz.restaurantservice",
+    "table.include.list": "restaurant.restaurant_outbox",
+    "publication.name": "dbz_restaurant_outbox_publication",
+    "plugin.name": "pgoutput",
+    "transforms": "outbox",
+    "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+    "value.converter.schemas.enabled": "true",
+    "transforms.outbox.table.field.event.key": "saga_id",
+    "transforms.outbox.table.field.event.payload": "payload",
+    "transforms.outbox.route.by.field": "event_type",
+    "transforms.outbox.route.topic.replacement": "${routedByValue}"
+
+  }
+}

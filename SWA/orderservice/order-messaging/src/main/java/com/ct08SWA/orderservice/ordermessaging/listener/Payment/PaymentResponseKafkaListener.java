@@ -31,7 +31,7 @@ public class PaymentResponseKafkaListener {
             topics = "${order-service.kafka.listen-payment-response-topic}",
 
             // Lấy Consumer Group ID để tham gia nhóm xử lý
-            groupId = "${spring.kafka.consumer.group-id}"
+            groupId = "${spring.kafka.consumer.group-id-payment}"
     )
     public void receive(ConsumerRecord<String, String> record) {
         String key = record.key();
