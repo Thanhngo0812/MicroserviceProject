@@ -20,7 +20,7 @@ public class OrderCancelCommandHandler {
     private final OrderRepository orderRepository;
     private final OrderOutboxRepository  orderOutboxRepository;
     private final OrderDomainService orderDomainService;
-    @Value("${order-service.kafka.order-cancel-topic}")
+    @Value("${order-service.kafka.order-state-topic}")
     private String OrderCancelEventTopic;
     public OrderCancelCommandHandler(OrderRepository orderRepository, OrderOutboxRepository orderOutboxRepository,OrderDomainService orderDomainService) {
         this.orderRepository = orderRepository;

@@ -22,9 +22,9 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
     private final OrderRepository orderRepository;
     private final OrderOutboxRepository orderOutboxRepository;
     private final OrderDomainService orderDomainService;
-    @Value("${order-service.kafka.order-cancel-topic}")
+    @Value("${order-service.kafka.order-state-topic}")
     private String OrderCancelEventTopic;
-    @Value("${order-service.kafka.order-paid-topic}")
+    @Value("${order-service.kafka.order-state-topic}")
     private String OrderPaidEventTopic;
     public PaymentResponseMessageListenerImpl(OrderRepository orderRepository
                                               ,OrderOutboxRepository orderOutboxRepository,OrderDomainService orderDomainService

@@ -1,6 +1,9 @@
 package com.ct08SWA.orderservice.orderdataaccess.mapper;
 import com.ct08SWA.orderservice.orderdataaccess.entity.OrderOutboxEntity;
+import com.ct08SWA.orderservice.orderdomaincore.event.OrderCancelledEvent;
+import com.ct08SWA.orderservice.orderdomaincore.event.OrderCreatedEvent;
 import com.ct08SWA.orderservice.orderdomaincore.event.OrderEvent;
+import com.ct08SWA.orderservice.orderdomaincore.event.OrderPaidEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +35,20 @@ public class OrderOutboxDataAccessMapper {
                 .createdAt(ZonedDateTime.now(ZoneId.of("UTC")))
                 .eventType(topic)
                 .payload(payloadJson)
+                .status(resolveStatus(orderEvent))
                 .build();
     }
 
+    private String resolveStatus(OrderEvent orderEvent) {
+        if (orderEvent instanceof OrderCreatedEvent) {
+            return "CREATED";
+        } else if (orderEvent instanceof OrderPaidEvent) {
+            return "PAID";
+        } else if (orderEvent instanceof OrderCancelledEvent) {
+            return "CANCELLED";
+        }
+        return "UNKNOWN"; // Trường hợp mặc định
+    }
     // Tách hàm xử lý JSON ra riêng và bọc try-catch
     private String writePayload(OrderEvent orderEvent) {
         try {

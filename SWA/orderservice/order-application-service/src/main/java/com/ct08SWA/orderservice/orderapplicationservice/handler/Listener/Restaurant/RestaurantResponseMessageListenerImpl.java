@@ -20,7 +20,7 @@ public class RestaurantResponseMessageListenerImpl implements RestaurantResponse
     private OrderRepository orderRepository;
     private OrderDomainService orderDomainService;
     private OrderOutboxRepository orderOutboxRepository;
-    @Value("${order-service.kafka.order-cancel-topic}")
+    @Value("${order-service.kafka.order-state-topic}")
     private String OrderCancelEventTopic;
     public RestaurantResponseMessageListenerImpl(OrderRepository orderRepository,OrderDomainService orderDomainService, OrderOutboxRepository orderOutboxRepository) {
         this.orderRepository = orderRepository;

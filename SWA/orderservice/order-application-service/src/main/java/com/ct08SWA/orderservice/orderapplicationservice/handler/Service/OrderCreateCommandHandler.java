@@ -18,7 +18,7 @@ public class OrderCreateCommandHandler {
     private final OrderDomainService orderDomainService;
     private final OrderRepository orderRepository;
     private final OrderOutboxRepository orderOutboxRepository;
-    @Value("${order-service.kafka.order-create-topic}")
+    @Value("${order-service.kafka.order-state-topic}")
     private String orderCreateTopic;
     public OrderCreateCommandHandler(
                                    OrderDataMapper orderDataMapper,OrderDomainService orderDomainService,OrderRepository orderRepository,OrderOutboxRepository orderOutboxRepository) {

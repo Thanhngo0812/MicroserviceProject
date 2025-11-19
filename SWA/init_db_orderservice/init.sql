@@ -39,7 +39,8 @@ CREATE TABLE "order".order_outbox (
     saga_id UUID NOT NULL, -- Thường là Order ID, để theo dõi
     created_at TIMESTAMP WITH TIME ZONE NOT NULL,
     event_type VARCHAR(255) NOT NULL, -- Tên Event, ví dụ: "OrderCreated"
-    payload JSONB NOT NULL
+    payload JSONB NOT NULL,
+    status TEXT NOT NULL
 );
 
 -- Indexes for performance

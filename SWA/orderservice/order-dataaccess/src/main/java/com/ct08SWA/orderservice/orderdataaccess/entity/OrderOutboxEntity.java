@@ -32,7 +32,8 @@ public class OrderOutboxEntity {
     @JdbcTypeCode(SqlTypes.JSON) // Cú pháp hiện đại cho Hibernate 6+
     @Column(name = "payload", columnDefinition = "JSON", nullable = false)
     private String payload; // Đổi sang byte[]
-
+    @Column(name = "status", nullable = false)
+    private String status;
     // --- Constructors ---
 
     public OrderOutboxEntity() {
@@ -42,12 +43,13 @@ public class OrderOutboxEntity {
      * Constructor đầy đủ tham số (all-args)
      * SỬA LẠI: Nhận byte[]
      */
-    public OrderOutboxEntity(UUID id, UUID sagaId, ZonedDateTime createdAt, String eventType, String  payload) {
+    public OrderOutboxEntity(UUID id, UUID sagaId, ZonedDateTime createdAt, String eventType, String  payload,String status) {
         this.id = id;
         this.sagaId = sagaId;
         this.createdAt = createdAt;
         this.eventType = eventType;
         this.payload = payload;
+        this.status = status;
     }
 
     // --- Getters ---
@@ -100,6 +102,13 @@ public class OrderOutboxEntity {
         this.payload = payload;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 
     // --- Equals & HashCode (Không đổi) ---
 
@@ -128,7 +137,7 @@ public class OrderOutboxEntity {
         private ZonedDateTime createdAt;
         private String eventType;
         private String  payload;
-
+        private String status;
         private Builder() {
         }
 
@@ -160,11 +169,15 @@ public class OrderOutboxEntity {
             return this;
         }
 
+        public Builder status(String  val) {
+            status = val;
+            return this;
+        }
 
 
         public OrderOutboxEntity build() {
             // Gọi constructor all-args (đã sửa)
-            return new OrderOutboxEntity(id, sagaId, createdAt, eventType, payload);
+            return new OrderOutboxEntity(id, sagaId, createdAt, eventType, payload,status);
         }
     }
 }
