@@ -1,4 +1,4 @@
-# DineFlow: High-Performance Distributed Microservices Platform
+# RestẩuntSystem: High-Performance Distributed Microservices Platform
 
 ![Java](https://img.shields.io/badge/Java-17%2B-ed8b00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-6db33f?style=for-the-badge&logo=spring&logoColor=white)
@@ -8,7 +8,7 @@
 
 ## 📖 Executive Summary
 
-**DineFlow** is not just a food ordering application; it is a proof-of-concept for a **Distributed Transaction Processing System** built on a Microservices architecture.
+**RestaurantSystem** is not just a food ordering application; it is a proof-of-concept for a **Distributed Transaction Processing System** built on a Microservices architecture.
 
 Designed with scalability and fault tolerance in mind, this project solves the challenges of data consistency in distributed systems (Distributed Data Management) using **Event-Driven Architecture** and **Change Data Capture (CDC)** patterns. These are the same architectural principles used in core banking and high-frequency trading systems to ensure zero data loss.
 
@@ -17,14 +17,14 @@ Designed with scalability and fault tolerance in mind, this project solves the c
 The system follows the **Database-per-Service** pattern to ensure loose coupling, orchestrated via Docker containers.
 
 ### High-Level Architecture Diagram
-![System Architecture Diagram](./docs/architecture.png)
-*(Please insert the High-Level Architecture Diagram here displaying the interaction between API Gateway, Microservices, and Kafka Broker)*
+![System Architecture Diagram](https://res.cloudinary.com/dfcb3zzw9/image/upload/v1767682557/Bi%E1%BB%83u_%C4%91%E1%BB%93_kh%C3%B4ng_c%C3%B3_ti%C3%AAu_%C4%91%E1%BB%81.drawio_2_av0pas.png)
+
 
 ### Data Flow & CDC Architecture
 This project implements **Debezium** to capture row-level changes from the MySQL database logs (Binlog) and stream them to Kafka, ensuring real-time data synchronization between the Order Service and Restaurant Service without dual-write problems.
 
-![CDC Data Flow](./docs/cdc-flow.png)
-*(Please insert the CDC/Debezium Flow Diagram here)*
+![CDC Data Flow](https://res.cloudinary.com/dfcb3zzw9/image/upload/v1767683181/Bi%E1%BB%83u_%C4%91%E1%BB%93_kh%C3%B4ng_c%C3%B3_ti%C3%AAu_%C4%91%E1%BB%81.drawio_3_qjc9mv.png)
+
 
 ---
 
@@ -68,8 +68,8 @@ This project implements **Debezium** to capture row-level changes from the MySQL
 ### Step-by-Step
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/dineflow-microservices.git](https://github.com/your-username/dineflow-microservices.git)
-    cd dineflow-microservices
+    git clone [https://github.com/Thanhngo0812/MicroserviceProject.git](https://github.com/Thanhngo0812/MicroserviceProject.git)
+    cd swa
     ```
 
 2.  **Start the Infrastructure (DB, Kafka, Debezium):**
@@ -85,10 +85,10 @@ This project implements **Debezium** to capture row-level changes from the MySQL
 
 ## 👨‍💻 About The Author
 
-I am a final-year Software Engineering student with a deep passion for **Backend Systems** and **Cloud Native Architecture**. 
+I am a final-year Software Engineering student with a deep passion for **Backend Systems (focus on distributed systems)** and **Cloud Native Architecture**. 
 
 My career goal is to join a dynamic **Banking / Fintech** technology team as a Backend Engineer/Fresher. I am eager to apply my knowledge of Microservices, Distributed Systems, and Database Optimization to solve complex financial scale problems.
 
 * **Main Focus:** Java Ecosystem, System Design, DevOps.
-* **Contact:** [Your Email Here]
-* **LinkedIn:** [Your LinkedIn Profile Link]
+* **Contact:** ngocongthanhsg0812@gmail.com
+* **LinkedIn:** www.linkedin.com/in/thành-ngô-08374024b
