@@ -1,24 +1,4 @@
-# 💫 About Me:
-### Hi there 👋, I'm Thanh Ngo
-
-I am a software engineering student passionate about **Backend Development** and **System Architecture**. I also have strong capabilities in **Frontend Engineering**, allowing me to build complete end-to-end solutions. My goal is to build high-performance, scalable microservices systems, especially in the FinTech and Banking sectors.
-
-- 🔭 I’m currently working on: **A High-Performance Distributed Microservices Platform**.
-- 🌱 I’m currently learning: **DevOps practices** (Docker/K8s), **System Optimization**, and **Advanced Java Core**.
-- 👯 I’m looking to collaborate on: Open source Java/Spring Boot projects.
-- ⚡ Fun fact: I love diving deep into how databases and operating systems work under the hood!
-
----
-
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/nct.sv) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thanh-ngo-08374024b) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:ngocongthanhsg0812@gmail.com)
-
----
-
-# 🏆 Featured Project: RestaurantSystem
-### *High-Performance Distributed Microservices Platform*
-
-> **Quick Link:** [📂 View Source Code on GitHub](https://github.com/Thanhngo0812/MicroserviceProject.git)
+# RestaurantSystem: High-Performance Distributed Microservices Platform
 
 ![Java](https://img.shields.io/badge/Java-17%2B-ed8b00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-6db33f?style=for-the-badge&logo=spring&logoColor=white)
@@ -26,43 +6,89 @@ I am a software engineering student passionate about **Backend Development** and
 ![Kafka](https://img.shields.io/badge/Kafka-Event_Driven-231f20?style=for-the-badge&logo=apachekafka&logoColor=white)
 ![Debezium](https://img.shields.io/badge/Debezium-CDC-blue?style=for-the-badge)
 
-### 📖 Executive Summary
-**RestaurantSystem** is a proof-of-concept for a **Distributed Transaction Processing System** built on a Microservices architecture.
+## 📖 Executive Summary
 
-Designed with scalability and fault tolerance in mind, this project solves the challenges of data consistency in distributed systems using **Event-Driven Architecture** and **Change Data Capture (CDC)** patterns. These are the same architectural principles used in core banking and high-frequency trading systems to ensure zero data loss.
+**RestaurantSystem** is not just a food ordering application; it is a proof-of-concept for a **Distributed Transaction Processing System** built on a Microservices architecture.
 
-### 🏗️ System Architecture & CDC Flow
-The system follows the **Database-per-Service** pattern, implementing **Debezium** to capture row-level changes from MySQL Binlogs and stream them to Kafka.
+Designed with scalability and fault tolerance in mind, this project solves the challenges of data consistency in distributed systems (Distributed Data Management) using **Event-Driven Architecture** and **Change Data Capture (CDC)** patterns. These are the same architectural principles used in core banking and high-frequency trading systems to ensure zero data loss.
 
+## 🏗️ System Architecture
+
+The system follows the **Database-per-Service** pattern to ensure loose coupling, orchestrated via Docker containers.
+
+### High-Level Architecture Diagram
 ![System Architecture Diagram](https://res.cloudinary.com/dfcb3zzw9/image/upload/v1767682557/Bi%E1%BB%83u_%C4%91%E1%BB%93_kh%C3%B4ng_c%C3%B3_ti%C3%AAu_%C4%91%E1%BB%81.drawio_2_av0pas.png)
 
-### 🚀 Key Features (Banking-Grade Focus)
-* **Transactional Integrity:** Implemented **SAGA Pattern (Choreography)** to ensure data consistency across `Order` and `Payment` services.
-* **Fault Tolerance:** **Circuit Breaker** implementation (Resilience4j) to prevent cascading failures.
-* **Real-time Monitoring:** Integrated Dashboard to visualize Heap Memory, Thread Pools, and Request Latency.
-* **Security First:** Centralized Authentication via API Gateway using JWT.
+
+### Data Flow & CDC Architecture
+This project implements **Debezium** to capture row-level changes from the MySQL database logs (Binlog) and stream them to Kafka, ensuring real-time data synchronization between the Order Service and Restaurant Service without dual-write problems.
+
+![CDC Data Flow](https://res.cloudinary.com/dfcb3zzw9/image/upload/v1767683181/Bi%E1%BB%83u_%C4%91%E1%BB%93_kh%C3%B4ng_c%C3%B3_ti%C3%AAu_%C4%91%E1%BB%81.drawio_3_qjc9mv.png)
+
 
 ---
 
-# 💻 Tech Stack & Skills:
+## 🧩 Microservices Breakdown
 
-### 🧠 Languages
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+| Service | Port | Key Responsibilities |
+| :--- | :--- | :--- |
+| **API Gateway** | `8080` | Entry point, Routing, Load Balancing, SSL Termination. |
+| **User Service (IAM)** | `8081` | Identity and Access Management, JWT Authentication, Security. |
+| **Restaurant Service** | `8082` | Product Catalog, Inventory Management (CQRS Optimized). |
+| **Order Service** | `8083` | **Core Transaction Engine**. Handles order lifecycle state machine. |
+| **Payment Service** | `8084` | Simulates financial transaction processing and auditing. |
+| **Monitor Service** | `9090` | **Spring Boot Admin** for centralized health checking & JVM metrics. |
+| **Debezium Connector**| `8083` | Captures DB changes for real-time analytics and sync. |
 
-### ⚙️ Backend & System Architecture (Main Focus)
-![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot) ![Microservices](https://img.shields.io/badge/Microservices-1F85DE?style=for-the-badge&logo=uml&logoColor=white)
+## 🛠️ Technology Stack & Engineering Decisions
 
-### 🎨 Frontend & Interface
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+* **Core Backend:** Java 17, Spring Boot 3.x, Spring Cloud Gateway.
+* **Data Storage:** MySQL (Primary DB), Redis (Caching - *planned*).
+* **Inter-service Communication:**
+    * **Synchronous:** REST API (OpenFeign) for read operations.
+    * **Asynchronous:** Apache Kafka for high-throughput event streaming.
+* **Data Consistency:** Debezium (CDC) for Event Sourcing capability.
+* **DevOps & Infrastructure:** Docker, Docker Compose for orchestration.
+* **Observability:** Spring Boot Admin, Actuator.
 
-### 🗄️ Database & Caching
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+## 🚀 Key Features (Banking-Grade Focus)
 
-### ☁️ DevOps & Infrastructure
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Kafka](https://img.shields.io/badge/Apache%20Kafka-000?style=for-the-badge&logo=apachekafka) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+1.  **Transactional Integrity:** Implemented SAGA Pattern (Choreography) to ensure data consistency across `Order` and `Payment` services.
+2.  **Fault Tolerance:** Circuit Breaker implementation (Resilience4j) to prevent cascading failures when a downstream service is down.
+3.  **Real-time Monitoring:** Integrated Dashboard to visualize Heap Memory, Thread Pools, and Request Latency—critical for maintaining SLAs in financial systems.
+4.  **Security First:** Centralized Authentication via API Gateway using JWT.
 
-### 🛠 Tools
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+## ⚙️ How to Run
+
+### Prerequisites
+* Docker & Docker Compose (v2.0+)
+* Java JDK 17+
+* Maven
+
+### Step-by-Step
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Thanhngo0812/MicroserviceProject.git](https://github.com/Thanhngo0812/MicroserviceProject.git)
+    cd swa
+    ```
+
+2.  **Start the Infrastructure (DB, Kafka, Debezium):**
+    ```bash
+    docker-compose up -d
+    ```
+
+3.  **Verify Deployment:**
+    * Access **Spring Boot Admin**: `http://localhost:9090`
+    * Access **API Gateway**: `http://localhost:8080`
 
 ---
-[![](https://visitcount.itsvg.in/api?id=ThanhNgo0812&icon=0&color=0)](https://visitcount.itsvg.in)
+
+## 👨‍💻 About The Author
+
+I am a final-year Software Engineering student with a deep passion for **Backend Systems (focus on distributed systems)** and **Cloud Native Architecture**. 
+
+My career goal is to join a dynamic **Banking / Fintech** technology team as a Backend Engineer/Fresher. I am eager to apply my knowledge of Microservices, Distributed Systems, and Database Optimization to solve complex financial scale problems.
+
+* **Main Focus:** Java Ecosystem, System Design, DevOps.
+* **Contact:** ngocongthanhsg0812@gmail.com
+* **LinkedIn:** www.linkedin.com/in/thành-ngô-08374024b
