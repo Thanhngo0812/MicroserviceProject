@@ -3,12 +3,15 @@ package com.ct08SWA.orderservice.ordercontainer.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.ct08SWA.orderservice.orderdomaincore.exception.OrderDomainException;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +45,16 @@ public class GlobalExceptionHandler {
         
         return errorResponse;
     }
-    
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleResponseStatusException(ResponseStatusException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("status", ex.getStatusCode().value());
+        error.put("message", ex.getReason() != null ? ex.getReason() : ex.getStatusCode().toString());
+        error.put("timestamp", LocalDateTime.now());
+
+        return new ResponseEntity<>(error, ex.getStatusCode());
+    }
+
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> handleGenericException(Exception ex) {

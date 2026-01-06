@@ -1,0 +1,6 @@
+target/
+**/target/
+.idea/
+SWA/.idea/
+*.class
+*.jar

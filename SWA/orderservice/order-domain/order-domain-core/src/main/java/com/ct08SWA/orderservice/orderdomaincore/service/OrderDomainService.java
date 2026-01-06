@@ -30,11 +30,12 @@ public interface OrderDomainService {
      * @param failureMessages failure messages
      */
     void cancelOrder(Order order, java.util.List<String> failureMessages);
-    
-    /**
-     * Initiate cancel order
-     * @param order the order to initiate cancel
-     * @param failureMessages failure messages
-     */
+    void cancelOrderAfterApproved(Order order, java.util.List<String> failureMessages);
+
+        /**
+         * Initiate cancel order
+         * @param order the order to initiate cancel
+         * @param failureMessages failure messages
+         */
     void initiateCancel(Order order, java.util.List<String> failureMessages);
 }

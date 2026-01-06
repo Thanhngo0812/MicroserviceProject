@@ -29,6 +29,20 @@
         <artifactId>order-domain-core</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </dependency>
+      <!-- Spring Boot Cache Abstraction -->
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-cache</artifactId>
+      </dependency>
+
+      <!-- Redis Driver -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-redis</artifactId>
+      </dependency>
+
+      <!-- OpenFeign (Để gọi sang User/Restaurant Service) -->
 	<dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-web</artifactId>

@@ -1,5 +1,7 @@
 package com.ct08SWA.orderservice.orderapplicationservice.handler.Service;
 
+
+import com.ct08SWA.orderservice.orderapplicationservice.exception.OrderDomainException;
 import com.ct08SWA.orderservice.orderapplicationservice.ports.outputports.Repository.OrderOutboxRepository;
 import com.ct08SWA.orderservice.orderapplicationservice.ports.outputports.Repository.OrderRepository;
 import com.ct08SWA.orderservice.orderdomaincore.entity.Order;
@@ -10,6 +12,8 @@ import com.ct08SWA.orderservice.orderapplicationservice.dto.inputdto.Order.Creat
 import com.ct08SWA.orderservice.orderapplicationservice.dto.ouputdto.Order.OrderCreatedResponse;
 import lombok.extern.slf4j.Slf4j;
 import com.ct08SWA.orderservice.orderapplicationservice.mapper.OrderDataMapper;
+
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -34,7 +38,10 @@ public class OrderCreateCommandHandler {
         orderRepository.save(order);
         log.info("Order is saved with id: {}", order.getId().getValue());
         orderOutboxRepository.save(order.getDomainEvents().get(0),order.getId().getValue(),orderCreateTopic);
+
         log.info("Order is created with id: {}", order.getId().getValue().toString());
         return orderDataMapper.orderToCreateOrderResponse(order.getTrackingId().getValue());
     }
+
+
 }

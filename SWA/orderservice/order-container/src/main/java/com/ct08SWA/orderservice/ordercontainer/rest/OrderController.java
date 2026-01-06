@@ -12,13 +12,14 @@ import com.ct08SWA.orderservice.orderapplicationservice.dto.ouputdto.Order.Order
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import com.ct08SWA.orderservice.orderapplicationservice.ports.inputports.Service.OrderApplicationService;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Map;
 import java.util.UUID;
 
 
 @RestController
 @RequestMapping(value = "/orders")
-@Slf4j
 public class OrderController {
 	private final OrderApplicationService orderApplicationService;
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
@@ -28,14 +29,19 @@ public class OrderController {
 	//new order
 	@PostMapping
 	public ResponseEntity<OrderCreatedResponse> createOrder(
-	@Valid @RequestBody CreateOrderCommand createOrderCommand) {
+	@Valid @RequestBody CreateOrderCommand createOrderCommand,
+    @RequestHeader("X-User-Id") String loggedInUserId) {
+
 	// Log request
 	log.info("Creating order for customer: {} at restaurant: {}",
 	createOrderCommand.customerId(),
 	createOrderCommand.restaurantId());
+
+        // 2. SO SÁNH ID TỪ TOKEN VÀ ID TRONG REQUEST
+        // Chuyển đổi String sang UUID để so sánh chính xác
+        UUID tokenUserId = UUID.fromString(loggedInUserId);
 	// Delegate to use case (Input Port)
-	OrderCreatedResponse response =
-	orderApplicationService.createOrder(createOrderCommand);
+	OrderCreatedResponse response = orderApplicationService.createOrder(createOrderCommand,tokenUserId);
 	// Log success
 	log.info("Order created with tracking id: {}",
 	response.orderTrackingId());
@@ -46,7 +52,7 @@ public class OrderController {
 	}
 
     @PostMapping("/{orderId}/cancel")
-    public ResponseEntity<Void> cancelOrder(@PathVariable UUID orderId) {
+    public ResponseEntity<String> cancelOrder(@PathVariable UUID orderId) {
         log.info("Request to cancel order received for ID: {}", orderId);
 
         CancelOrderCommand command = CancelOrderCommand.builder()
@@ -57,7 +63,7 @@ public class OrderController {
         orderApplicationService.cancelOrder(command);
 
         // 2. Trả về HTTP 202 Accepted (để báo hiệu SAGA đã bắt đầu)
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.accepted().body("Bạn đã hủy đơn hàng thành công");
     }
 	}
 

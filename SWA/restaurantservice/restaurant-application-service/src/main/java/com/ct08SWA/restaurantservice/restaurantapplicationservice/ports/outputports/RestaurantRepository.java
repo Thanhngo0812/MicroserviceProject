@@ -5,6 +5,7 @@ import com.ct08SWA.restaurantservice.restaurantdomaincore.entity.Restaurant;
 import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.RestaurantId;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Output Port (Interface "sạch")
@@ -18,7 +19,7 @@ public interface RestaurantRepository {
      * Tải (Load) Restaurant VÀ danh sách Products của nó.
      */
     Optional<Restaurant> findRestaurantInformation(RestaurantId restaurantId);
-
+    Optional<Restaurant> findById(UUID restaurantId);
     // (Lưu ý: Không có findProductById() ở đây,
     //  vì chúng ta phải đi qua Aggregate Root 'Restaurant')
 }

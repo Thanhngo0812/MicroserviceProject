@@ -64,6 +64,14 @@ public class OrderApprovalCommandHandlerImpl implements OrderApprovalCommandHand
             restaurantOutboxRepository.save(orderApproval.getDomainEvents().get(0), orderApproval.getOrderId().getValue(),restaurantResponseTopic);
 
         } else if (orderApprovalCommand.getStatus() == ApprovalStatus.REJECTED) {
+            if (orderApproval.getApprovalStatus() == ApprovalStatus.CANCELLED) {
+                throw new RestaurantApplicationServiceException(
+                        "Order is CANCELLED! Current state: " + orderApproval.getApprovalStatus());
+            }
+            else if (orderApproval.getApprovalStatus() == ApprovalStatus.REJECTED) {
+                throw new RestaurantApplicationServiceException(
+                        "Order is ALREADY REJECTED! Current state: " + orderApproval.getApprovalStatus());
+            }
             log.info("Order {} is REJECTED by restaurant.", orderId.getValue());
             List<String> failures = orderApprovalCommand.getFailureMessages() != null ?
                     List.of(orderApprovalCommand.getFailureMessages()) : Collections.emptyList();

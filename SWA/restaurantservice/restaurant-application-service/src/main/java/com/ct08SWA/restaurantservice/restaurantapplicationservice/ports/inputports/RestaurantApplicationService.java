@@ -1,4 +1,10 @@
 package com.ct08SWA.restaurantservice.restaurantapplicationservice.ports.inputports;
 
-public class RestaurantApplicationService {
+import com.ct08SWA.restaurantservice.restaurantapplicationservice.dto.outpudto.RestaurantValidationResponse;
+import com.ct08SWA.restaurantservice.restaurantdomaincore.entity.Restaurant;
+
+import java.util.UUID;
+
+public interface RestaurantApplicationService {
+    RestaurantValidationResponse findRestaurantById(UUID restaurantId);
 }

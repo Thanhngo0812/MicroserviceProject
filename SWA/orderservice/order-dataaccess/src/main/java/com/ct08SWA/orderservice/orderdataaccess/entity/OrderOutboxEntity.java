@@ -13,7 +13,7 @@ import java.util.UUID;
  * SỬA LẠI: Tương thích với Debezium + Avro (dùng byte[]).
  */
 @Entity
-@Table(name = "order_outbox", schema = "order")
+@Table(name = "order_outbox", schema = "orders")
 public class OrderOutboxEntity {
 
     @Id

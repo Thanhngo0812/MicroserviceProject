@@ -67,7 +67,12 @@ public class OrderDomainServiceImpl implements OrderDomainService {
         OrderCancelledEvent event = new OrderCancelledEvent(order.getId().getValue(),ZonedDateTime.now(UTC),order.getPrice().getAmount(),order.getCustomerId().getValue());
         order.addDomainEvent(event);
     }
-
+    @Override
+    public void cancelOrderAfterApproved(Order order, java.util.List<String> failureMessages) {
+        order.cancelbykitchen(failureMessages);
+        OrderCancelledEvent event = new OrderCancelledEvent(order.getId().getValue(),ZonedDateTime.now(UTC),order.getPrice().getAmount(),order.getCustomerId().getValue());
+        order.addDomainEvent(event);
+    }
     @Override
     public void initiateCancel(Order order, java.util.List<String> failureMessages) {
         order.initCancel(failureMessages);

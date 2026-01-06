@@ -45,6 +45,13 @@
             <url>https://packages.confluent.io/maven/</url>
         </repository>
     </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+    </dependencies>
     <build>
         <pluginManagement>
             <plugins>

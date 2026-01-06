@@ -1,4 +1,4 @@
 package com.ct08SWA.userservice.userdomaincore.event;
 
-public class UserEvent {
+public interface UserEvent {
 }

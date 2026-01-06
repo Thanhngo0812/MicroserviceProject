@@ -1,0 +1,154 @@
+server:
+  port: 8082
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+spring:
+  boot:
+    admin:
+      client:
+        url: http://monitor-service:8090 # Tên service trong Docker Compose
+        instance:
+          prefer-ip: true # Bắt buộc cho Docker
+          # Đặt tên service rõ ràng để dễ nhìn trên UI
+          # service-base-url: http://user-service:8081 (Có thể cần nếu monitor không tự ping được)
+
+  application:
+    name: api-gateway
+
+  # Cấu hình Redis cho Rate Limiting
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+  cloud:
+    gateway:
+      # Định nghĩa các Routes
+      routes:
+        # ==========================================
+        # 1. USER SERVICE - PUBLIC (Login/Register)
+        # Chiến lược: Chặt chẽ (Strict)
+        # ==========================================
+        - id: user-service-public
+          uri: http://userservice:8885
+          predicates:
+            - Path=/apigateway/auth/register, /apigateway/auth/login
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 2  # Chỉ cho phép 2 req/s trung bình
+                redis-rate-limiter.burstCapacity: 5  # Tối đa 5 req dồn dập
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: authCircuitBreaker
+                fallbackUri: forward:/fallback/user
+
+        # ==========================================
+        # 2. USER SERVICE - SECURED (Profile/Admin)
+        # Chiến lược: Trung bình (Moderate)
+        # ==========================================
+        - id: user-service-secured
+          uri: http://userservice:8885
+          predicates:
+            # Gộp các path secured
+            - Path=/apigateway/auth/**, /apigateway/admin/**
+          filters:
+            - StripPrefix=1
+            - AuthenticationFilterAdmin # Check Token & Blacklist
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: authCircuitBreaker
+                fallbackUri: forward:/fallback/user
+
+        # ==========================================
+        # 3. ORDER SERVICE (Transactional)
+        # Chiến lược: An toàn & Fail-fast
+        # ==========================================
+        - id: order-service
+          uri: http://orderservice:8888 # Lưu ý: Check lại port của Order Service trong docker-compose
+          predicates:
+            - Path=/apigateway/orders/**
+          filters:
+            - StripPrefix=1
+            - AuthenticationFilter
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 5  # 5 đơn/giây là đủ cho người dùng
+                redis-rate-limiter.burstCapacity: 10
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: orderCircuitBreaker
+                fallbackUri: forward:/fallback/order
+
+        # ==========================================
+        # 4. RESTAURANT SERVICE (Read-Heavy)
+        # Chiến lược: Thoải mái (High Throughput)
+        # ==========================================
+        - id: restaurant-service
+          uri: http://restaurantservice:8886
+          predicates:
+            - Path=/apigateway/restaurants/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 20 # Cho phép load nhanh
+                redis-rate-limiter.burstCapacity: 50 # Burst cao để load nhiều ảnh/menu
+                key-resolver: "#{@userKeyResolver}"
+            - name: CircuitBreaker
+              args:
+                name: restaurantCircuitBreaker
+                fallbackUri: forward:/fallback/restaurant
+
+      # Cấu hình mặc định cho HTTP Client (Gọi sang service con)
+      httpclient:
+        connect-timeout: 5000 # 5s
+        response-timeout: 10s
+
+# Cấu hình chi tiết Circuit Breaker (Resilience4j)
+resilience4j:
+  circuitbreaker:
+    instances:
+      authCircuitBreaker:
+        slidingWindowSize: 10        # Chỉ cần 10 request để đánh giá
+        failureRateThreshold: 50     # 50% lỗi -> Mở mạch
+        waitDurationInOpenState: 5s  # Chờ 5s thử lại
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5      # Tối thiểu 5 gọi mới tính toán
+
+        # Cấu hình cho Order (Quan trọng, cần ổn định)
+      orderCircuitBreaker:
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+      restaurantCircuitBreaker:
+        slidingWindowSize: 20
+        failureRateThreshold: 60
+        waitDurationInOpenState: 10s
+
+# Mở Actuator để Monitor đọc dữ liệu
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "health"
+          - "metrics"
+          - "gateway"             # Để xem Routes của Gateway
+          - "circuitbreakers"     # Để xem trạng thái Đóng/Mở mạch
+          - "circuitbreakerevents" # Để xem lịch sử các lần lỗi/ngắt mạch
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true # Bật endpoint gateway

@@ -2,6 +2,9 @@ package com.ct08SWA.orderservice.orderdataaccess.entity;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "orders", schema = "\"order\"")
+@Table(name = "orders", schema = "\"orders\"")
 public class OrderEntity {
     
     @Id
@@ -28,7 +31,8 @@ public class OrderEntity {
     private BigDecimal price;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "order_status", nullable = false)
+    @Column(name = "order_status", nullable = false ,columnDefinition = "order_status")
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM) // <--- THÊM DÒNG NÀY
     private OrderStatus orderStatus;
     
     @Column(name = "failure_messages")

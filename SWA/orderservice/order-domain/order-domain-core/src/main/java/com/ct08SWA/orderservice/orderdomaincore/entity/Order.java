@@ -63,7 +63,13 @@ public class Order extends AggregateRoot<OrderId> {
         orderStatus = OrderStatus.PAYMENT_FAILED;
         updateFailureMessages(failureMessages);
     }
-
+    public void cancelbykitchen(List<String> failureMessages) {
+        if (!(orderStatus == OrderStatus.PENDING || orderStatus == OrderStatus.CANCELLING||orderStatus == OrderStatus.APPROVED)) {
+            throw new OrderDomainException("Order is not in correct state for cancel operation!");
+        }
+        orderStatus = OrderStatus.CANCELLED;
+        updateFailureMessages(failureMessages);
+    }
     public void cancel(List<String> failureMessages) {
         if (!(orderStatus == OrderStatus.PENDING || orderStatus == OrderStatus.CANCELLING)) {
             throw new OrderDomainException("Order is not in correct state for cancel operation!");

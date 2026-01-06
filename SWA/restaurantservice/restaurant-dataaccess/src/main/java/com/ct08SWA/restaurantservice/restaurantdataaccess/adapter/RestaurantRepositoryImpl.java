@@ -9,6 +9,7 @@ import com.ct08SWA.restaurantservice.restaurantdomaincore.valueobject.Restaurant
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Adapter: Triển khai (implement) RestaurantRepository (Output Port "sạch").
@@ -36,4 +37,13 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
                 // 2. Map (dịch) kết quả (JPA Entity) sang Domain Entity (sạch)
                 .map(restaurantDataAccessMapper::restaurantEntityToRestaurant);
     }
+
+    @Override
+    public Optional<Restaurant> findById(UUID restaurantId) {
+        // 1. Gọi Jpa Repo (dùng hàm custom @Query)
+        return restaurantJpaRepository.findRestaurantInformation(restaurantId)
+                // 2. Map (dịch) kết quả (JPA Entity) sang Domain Entity (sạch)
+                .map(restaurantDataAccessMapper::restaurantEntityToRestaurant);
+    }
+
 }

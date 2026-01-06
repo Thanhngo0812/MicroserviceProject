@@ -1,6 +1,49 @@
 version: '3.8'
 
 services:
+  # Gateway
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8082:8082"
+    depends_on:
+      - redis
+      - userservice
+    environment:
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://monitor-service:8090
+    networks:
+      - microservice-network
+
+  # Redis cho Rate Limit
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - microservice-network
+    volumes:
+      - redis_data:/data
+    # Thêm Redis Insight vào đây
+  redis-insight:
+    image: redis/redisinsight:latest
+    container_name: redis-insight
+    ports:
+      - "5540:5540" # Cổng mặc định của Insight
+    depends_on:
+      - redis
+    networks:
+      - microservice-network
+
+
+      
+  monitor-service:
+    build: ./monitorservice
+    ports:
+      - "8090:8090" # Truy cập UI qua cổng này
+    networks:
+      - microservice-network
+
   # -------------------------------------------
   # Infrastructure Services (Kafka, ZK)
   # -------------------------------------------
@@ -96,6 +139,8 @@ services:
       POSTGRES_DB: paymentservice # Tên DB
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: thanh0909246319 # Thay bằng password của bạn
+      SPRING_BOOT_ADMIN_CLIENT_URL: http://monitor-service:8090
+
     command:
       - "postgres"
       - "-c"
@@ -128,6 +173,26 @@ services:
     networks:
       - microservice-network
 
+  postgres_user:
+    image: postgres:15
+    container_name: postgres_user
+    hostname: postgres_user
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: userservice # Tên DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh0909246319 # Thay bằng password của bạn
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - postgres_user_data:/var/lib/postgresql/data
+      # Map thư mục chứa script init DB của PaymentService
+      - ./init_db_userservice:/docker-entrypoint-initdb.d
+    networks:
+      - microservice-network
   # DỊCH VỤ DEBEZIUM (KAFKA CONNECT)
   # -------------------------------------------
   # -------------------------------------------
@@ -152,7 +217,7 @@ services:
       OFFSET_STORAGE_REPLICATION_FACTOR: "1"
       STATUS_STORAGE_REPLICATION_FACTOR: "1"
       KEY_CONVERTER: "org.apache.kafka.connect.storage.StringConverter"
-      VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter" # ĐÚNG
+      VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_REST_ADVERTISED_HOST_NAME: "localhost"
@@ -194,6 +259,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
       # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
+      SPRING_BOOT_ADMIN_CLIENT_URL: http://monitor-service:8090
     networks:
       - microservice-network
 
@@ -214,6 +280,8 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: thanh0909246319
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_BOOT_ADMIN_CLIENT_URL: http://monitor-service:8090
+
     networks:
       - microservice-network
 
@@ -238,18 +306,46 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
       # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
+      SPRING_BOOT_ADMIN_CLIENT_URL: http://monitor-service:8090
+
     networks:
       - microservice-network
+
+  userservice:
+    build:
+      context: ./userservice # Đường dẫn đến project OrderService
+      dockerfile: Dockerfile
+    container_name: userservice
+    hostname: userservice
+    depends_on:
+      - kafka
+      - postgres_user
+      - connect # Thêm depends_on Debezium
+    ports:
+      - "8885:8885"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker # Kích hoạt profile docker
+      # Biến môi trường cho kết nối DB (sẽ được đọc bởi application-docker.properties)
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_user:5432/userservice
+      SPRING_DATASOURCE_PASSWORD: thanh0909246319
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Biến môi trường cho Kafka (không bắt buộc nếu đã hardcode trong properties)
+      # KAFKA_BOOTSTRAP_SERVERS: 'kafka:29092'
+      SPRING_BOOT_ADMIN_CLIENT_URL: http://monitor-service:8090
+    networks:
+      - microservice-network
+      
 networks:
   microservice-network:
     driver: bridge
-
 
 
 volumes:
   postgres_order_data:
   postgres_payment_data:
   postgres_restaurant_data:
-
+  postgres_user_data:
+  redis_data:
 
     

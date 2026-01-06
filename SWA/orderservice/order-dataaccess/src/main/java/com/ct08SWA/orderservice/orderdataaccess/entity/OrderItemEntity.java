@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "order_items", schema = "\"order\"")
+@Table(name = "order_items", schema = "\"orders\"")
 @IdClass(OrderItemEntityId.class)
 public class OrderItemEntity {
     

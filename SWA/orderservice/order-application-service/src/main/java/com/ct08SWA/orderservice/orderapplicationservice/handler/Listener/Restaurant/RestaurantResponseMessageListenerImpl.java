@@ -86,7 +86,7 @@ public class RestaurantResponseMessageListenerImpl implements RestaurantResponse
                 break;
 
             case PENDING:
-            case APPROVED: // Giả sử cho phép hủy sau khi approve (hiếm gặp)
+
                 // Hủy ngay lập tức (Tiền chưa trừ hoặc không cần hoàn tiền theo luồng này)
                 log.info("Order {} is {}. Cancelling immediately due to Restaurant Rejection.",
                         order.getId().getValue(), currentStatus);
@@ -95,7 +95,14 @@ public class RestaurantResponseMessageListenerImpl implements RestaurantResponse
                 orderRepository.save(order);
                 orderOutboxRepository.save(order.getDomainEvents().get(0),order.getId().getValue(),OrderCancelEventTopic );
                 break;
+            case APPROVED: // Giả sử cho phép hủy sau khi approve (hiếm gặp)
+                // Hủy ngay lập tức (Tiền chưa trừ hoặc không cần hoàn tiền theo luồng này)
+                log.info("Order {} is {}. Cancelling immediately due to Restaurant Rejection.",
+                        order.getId().getValue(), currentStatus);
 
+                orderDomainService.cancelOrderAfterApproved(order,restaurantResponse.getFailureMessages());
+                orderRepository.save(order);
+                orderOutboxRepository.save(order.getDomainEvents().get(0),order.getId().getValue(),OrderCancelEventTopic );
             case CANCELLING:
             case CANCELLED:
                 log.warn("Order {} is already {}. Ignoring Restaurant REJECTED signal.",
